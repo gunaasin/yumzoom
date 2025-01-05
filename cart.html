@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YumZoom</title>
+  <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="./styles/main.css">
+  <link rel="stylesheet" href="./styles/nav.css">
+  <link rel="stylesheet" href="./styles/cart.css">
+  <link rel="stylesheet" href="./styles/footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Modern+Antiqua&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <nav class="nav"></nav>
+    <main class="cart-container">
+        <h1 class="cart-title">Your Cart</h1>
+        
+        <div class="cart-content">
+            <div class="cart-items">
+                <!-- Cart Item 1 -->
+                <div class="cart-item">
+                    <div class="item-info">
+                        <div class="veg-indicator veg"></div>
+                        <h3>Margherita Pizza</h3>
+                        <p class="restaurant">Domino's Pizza</p>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="quantity-btn">-</button>
+                        <span>1</span>
+                        <button class="quantity-btn">+</button>
+                    </div>
+                    <div class="item-price">₹199</div>
+                    <button class="remove-btn">×</button>
+                </div>
+
+                <!-- Cart Item 2 -->
+                <div class="cart-item">
+                    <div class="item-info">
+                        <div class="veg-indicator non-veg"></div>
+                        <h3>Chicken Biryani</h3>
+                        <p class="restaurant">Paradise Biryani</p>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="quantity-btn">-</button>
+                        <span>2</span>
+                        <button class="quantity-btn">+</button>
+                    </div>
+                    <div class="item-price">₹398</div>
+                    <button class="remove-btn">×</button>
+                </div>
+            </div>
+
+            <div class="cart-summary">
+                <h2>Bill Details</h2>
+                <div class="summary-item">
+                    <span>Item Total</span>
+                    <span>₹597</span>
+                </div>
+                <div class="summary-item">
+                    <span>Delivery Fee</span>
+                    <span>₹40</span>
+                </div>
+                <div class="summary-item">
+                    <span>Platform Fee</span>
+                    <span>₹5</span>
+                </div>
+                <div class="summary-item">
+                    <span>GST</span>
+                    <span>₹32</span>
+                </div>
+                <div class="summary-total">
+                    <span>To Pay</span>
+                    <span>₹674</span>
+                </div>
+                <button class="checkout-btn">Proceed to Checkout</button>
+            </div>
+        </div>
+    </main>
+
+    
+  <footer class="footer"></footer>
+
+    <script type="module" src="./scripts/cart.js"></script>
+</body>
+</html>

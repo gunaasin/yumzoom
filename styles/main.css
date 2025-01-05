@@ -1,0 +1,58 @@
+
+  :root {
+    --primary-color: #ff493c;
+    --primary-color-shade: #ff493cec;
+    --primary-color-light: #fff5f5;
+    --primary-color-lighter: #FFC4C4;
+    --secondary-color: #000000;
+    --background-color: #FFFFFF;
+    --text-color: #333333;
+    --gray-color: #666666;
+    --light-gray: #f5f5f5;
+    --border-color: #e0e0e0;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+}
+
+* {
+  overscroll-behavior: none;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    /* font-family: system-ui, -apple-system, sans-serif; */
+    font-family: "Poppins", serif;
+}
+
+body {
+  overscroll-behavior: none;
+    background-color: var(--light-gray);
+    color: var(--text-color);
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--light-gray); 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--gray-color); 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+
+
+  ::selection{
+    background-color: var(--primary-color-lighter);
+  }

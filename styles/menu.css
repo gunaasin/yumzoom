@@ -1,0 +1,348 @@
+/* Food card specific styles */
+
+.food-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 50px;
+}
+
+.search-bar-menu {
+    margin: 20px 0px;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #e0e0e0; */
+}
+
+/* From Uiverse.io by vinodjangid07 */
+.InputContainer {
+    width: 70%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    padding-left: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075);
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input {
+    width: 80%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size:1em;
+    caret-color: rgb(255, 81, 0);
+}
+
+.search {
+    border: none;
+    background-color: transparent;
+    height: 40px;
+    cursor: pointer;
+    padding: 0px 12px;
+}
+
+.searchIcon {
+    width: 13px;
+}
+
+.border-line {
+    height: 100%;
+    border-right: 3px solid gray;
+    background-color: rgb(68, 68, 68);
+}
+
+.micIcon {
+    width: 12px;
+}
+
+.micButton {
+    padding: 5px 15px;
+    margin: 0px 10px 0px 0px;
+    border: none;
+    border-left: 1px solid gray;
+    background-color: transparent;
+    height: 40px;
+    cursor: pointer;
+    transition-duration: .3s;
+
+    &:focus path {
+        fill: rgb(255, 81, 0);
+
+    }
+}
+
+.searchIcon path {
+    fill: rgb(114, 114, 114);
+}
+
+.micIcon path {
+    fill: rgb(12, 8, 8);
+}
+
+.search-input-menu {
+    width: 70%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 5px 0px 0px 5px;
+    font-size: 1rem;
+    transition: all 0.2s;
+
+    &:focus {
+        outline: none;
+        border: 2px solid #ff6b6b;
+        background-color: #fff5f5;
+        color: #422323;
+    }
+}
+
+.search-btn-menu {
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+    font-size: 1rem;
+    transition: all 0.2s;
+    background-color: var(--primary-color);
+}
+
+
+
+.footer {
+    position: relative;
+    top: 60px;
+}
+
+.food-card {
+    height: 335px;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    transition:  0.4s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    &:hover .food-image {
+        transform: scale(1.04);
+    }
+    
+    &:hover {
+        transform: translateY(-4px);
+    }
+
+}
+
+
+
+.food-image {
+    width: 100%;
+    transition:  0.2s ease-in-out;
+    height: 250px;
+    object-fit: cover;
+}
+
+.food-info {
+    padding: 16px;
+}
+
+.food-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.veg-indicator {
+    width: 16px;
+    height: 16px;
+    border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.veg-indicator::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.veg-indicator.veg {
+    border-color: #48c479;
+}
+
+.veg-indicator.veg::after {
+    background: #48c479;
+}
+
+.veg-indicator.non-veg {
+    border-color: #e43b4f;
+}
+
+.veg-indicator.non-veg::after {
+    background: #e43b4f;
+}
+
+.add-to-cart {
+    background: #afafafe1;
+    color: var(--text-color);
+    border: 1px solid #c7c7c7ee;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 12px;
+    width: 100%;
+    /* transition: background 0.2s; */
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+        color: white;
+        background: var(--primary-color);
+    }
+}
+
+
+
+
+/* Food information styles */
+.food-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #282c3f;
+}
+
+.food-cuisine {
+    color: #686b78;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.food-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.rating-badge {
+    background-color: #48c479;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.delivery-info {
+    display: flex;
+    justify-content: space-between;
+    color: #686b78;
+    font-size: 14px;
+}
+
+.price {
+    font-weight: bold;
+}
+
+/* Grid layout styles */
+.food-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+
+/* ftbyiuweiufywe fuyweiufy uisygtewiuyfg */
+
+.food-info-container {
+    display: flex;
+}
+
+.left-food-container,
+.right-food-container {
+    flex: 1;
+}
+
+.left-food-container {
+    position: relative;
+    padding: 10px 20px 10px 10px;
+}
+
+.right-food-container img {
+    border-radius: 15px;
+}
+
+.cart-add-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.decrement,
+.increment {
+    background: var(--light-gray);
+    color: var(--text-color);
+    border: none;
+    border: 1px solid var(--light-gray);
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 12px;
+    width: 50px;
+    transition: 0.2s ease-in-out;
+}
+
+.decrement {
+    border-radius: 4px 0px 0px 4px;
+
+    &:hover {
+        color: var(--primary-color);
+        border-color: #afafafe1;
+    }
+
+    &:focus {
+        border-color: #9e9e9ee1;
+        background-color: #868686;
+    }
+}
+
+.increment {
+    border-radius: 0px 4px 4px 0px;
+
+    &:hover {
+        border-color: #afafafe1;
+        color: var(--primary-color);
+    }
+
+    &:focus {
+        border-color: #9e9e9ee1;
+        background-color: #868686;
+    }
+
+
+}
+
+/* ftbyiuweiufywe fuyweiufy uisygtewiuyfg */
+
+.section-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: #282c3f;
+}
+
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 32px;
+}

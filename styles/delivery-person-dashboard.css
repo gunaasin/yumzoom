@@ -1,0 +1,225 @@
+.dashboard-container {
+    display: flex;
+    margin-top: 1rem;
+    min-height: calc(100vh - 4rem);
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--background-color);
+    padding: 1rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.driver-info {
+    text-align: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.driver-info img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+}
+
+.status {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    margin: 0.5rem 0;
+}
+
+.status.available {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.rating {
+    color: var(--warning-color);
+    font-size: 1.1rem;
+}
+
+.sidebar-menu {
+    list-style: none;
+    margin-top: 2rem;
+}
+
+.sidebar-menu li {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.sidebar-menu li:hover {
+    background-color: var(--light-gray);
+}
+
+.sidebar-menu li.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    background-color: var(--light-gray);
+}
+
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background-color: var(--background-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.stat-info h3 {
+    font-size: 0.9rem;
+    color: var(--gray-color);
+    margin-bottom: 0.25rem;
+}
+
+.stat-info p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+
+/* deliveries */
+
+.active-deliveries,
+.upcoming-deliveries {
+    background-color: var(--background-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.delivery-card {
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+}
+
+.delivery-card.active {
+    border: 2px solid var(--primary-color);
+}
+
+.delivery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.order-id {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.delivery-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+.delivery-status.in-progress {
+    background-color: var(--info-color);
+    color: white;
+}
+
+.delivery-status.pending {
+    background-color: var(--warning-color);
+    color: var(--text-color);
+}
+
+.location-details {
+    display: grid;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.pickup,
+.delivery {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.pickup i,
+.delivery i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.pickup h4,
+.delivery h4 {
+    margin-bottom: 0.5rem;
+    color: var(--gray-color);
+}
+
+.delivery-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.btn.picked-up {
+    background-color: var(--info-color);
+    color: white;
+}
+
+.btn.delivered {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.btn.navigate {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn.accept {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.btn.reject {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .delivery-actions {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}

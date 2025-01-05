@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Dashboard - FoodExpress</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/delivery-person-dashboard.css">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">FoodExpress Delivery</div>
+        <div class="nav-links">
+            <a href="#" class="active">Dashboard</a>
+            <a href="#deliveries">Deliveries</a>
+            <a href="#earnings">Earnings</a>
+        </div>
+        <div class="nav-icons">
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-user"></i>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="driver-info">
+                <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&auto=format&fit=crop&q=60" alt="Driver Photo">
+                <h2>John Smith</h2>
+                <span class="status available">Available</span>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <span>4.8</span>
+                </div>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active"><i class="fas fa-home"></i> Overview</li>
+                <li><i class="fas fa-motorcycle"></i> Active Deliveries</li>
+                <li><i class="fas fa-history"></i> History</li>
+                <li><i class="fas fa-wallet"></i> Earnings</li>
+                <li><i class="fas fa-cog"></i> Settings</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <section class="stats-section">
+                <div class="stat-card">
+                    <i class="fas fa-route"></i>
+                    <div class="stat-info">
+                        <h3>Today's Deliveries</h3>
+                        <p>12</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h3>Today's Earnings</h3>
+                        <p>₹ 8650</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-clock"></i>
+                    <div class="stat-info">
+                        <h3>Average Time</h3>
+                        <p>18 mins</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="active-deliveries">
+                <h2>Current Delivery</h2>
+                <div class="delivery-card active">
+                    <div class="delivery-header">
+                        <span class="order-id">#12345</span>
+                        <span class="delivery-status in-progress">In Progress</span>
+                    </div>
+                    <div class="delivery-details">
+                        <div class="location-details">
+                            <div class="pickup">
+                                <i class="fas fa-store"></i>
+                                <div>
+                                    <h4>Pickup</h4>
+                                    <p>Pizza Paradise</p>
+                                    <p>123 Main St</p>
+                                </div>
+                            </div>
+                            <div class="delivery">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Delivery</h4>
+                                    <p>John Doe</p>
+                                    <p>456 Oak Avenue</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="delivery-actions">
+                            <button class="btn picked-up">Mark as Picked Up</button>
+                            <button class="btn delivered">Mark as Delivered</button>
+                            <button class="btn navigate">Navigate</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="upcoming-deliveries">
+                <h2>Upcoming Deliveries</h2>
+                <div class="delivery-card">
+                    <div class="delivery-header">
+                        <span class="order-id">#12346</span>
+                        <span class="delivery-status pending">Pending Pickup</span>
+                    </div>
+                    <div class="delivery-details">
+                        <div class="location-details">
+                            <div class="pickup">
+                                <i class="fas fa-store"></i>
+                                <div>
+                                    <h4>Pickup</h4>
+                                    <p>Burger House</p>
+                                    <p>789 Elm St</p>
+                                </div>
+                            </div>
+                            <div class="delivery">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Delivery</h4>
+                                    <p>Jane Smith</p>
+                                    <p>321 Pine Road</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="delivery-actions">
+                            <button class="btn accept">Accept Delivery</button>
+                            <button class="btn reject">Decline</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

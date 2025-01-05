@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Dashboard - FoodExpress</title>
+        <link rel="stylesheet" href="./styles/main.css">
+        <link rel="stylesheet" href="./styles/resturant-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">FoodExpress Partner</div>
+        <div class="nav-links">
+            <a href="#" class="active">Dashboard</a>
+            <a href="#orders">Orders</a>
+            <a href="#menu">Menu</a>
+            <a href="#settings">Settings</a>
+        </div>
+        <div class="nav-icons">
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-user"></i>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="restaurant-info">
+                <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Restaurant Logo">
+                <h2>Pizza Paradise</h2>
+                <span class="status online">Online</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active"><i class="fas fa-home"></i> Overview</li>
+                <li><i class="fas fa-clipboard-list"></i> Orders</li>
+                <li><i class="fas fa-utensils"></i> Menu Items</li>
+                <li><i class="fas fa-cog"></i> Settings</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <section class="orders-section">
+                <h2>Recent Orders</h2>
+                <div class="orders-list">
+                    <div class="order-card">
+                        <div class="order-header">
+                            <span class="order-id">#12345</span>
+                            <span class="order-status pending">Pending</span>
+                        </div>
+                        <div class="order-details">
+                            <p class="customer-name">John Doe</p>
+                            <p class="order-items">2x Margherita Pizza, 1x Coke</p>
+                            <p class="order-total">$32.50</p>
+                        </div>
+                        <div class="order-actions">
+                            <button class="btn accept">Accept</button>
+                            <button class="btn reject">Reject</button>
+                        </div>
+                    </div>
+                    <!-- More order cards -->
+                </div>
+            </section>
+
+            <section class="add-item-section">
+                <h2>Add New Menu Item</h2>
+                <form class="add-item-form">
+                    <div class="form-group">
+                        <label for="item_name">Item Name</label>
+                        <input type="text" id="item_name" name="item_name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" rows="3" required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="price">Price ($)</label>
+                            <input type="number" id="price" name="price" step="0.01" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="is_available">Availability</label>
+                            <select id="is_available" name="is_available" required>
+                                <option value="true">Available</option>
+                                <option value="false">Not Available</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="food_image">Food Image</label>
+                        <div class="image-upload">
+                            <input type="file" id="food_image" name="food_image" accept="image/*" required>
+                            <label for="food_image" class="upload-label">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Click to upload image</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn submit-btn">Add Item</button>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
