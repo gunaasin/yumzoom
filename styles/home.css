@@ -834,6 +834,7 @@ footer {
 /* xsm*/
 @media (max-width: 475px) {
   header {
+    overflow-x: hidden;
     background-color: var(--background-color);
     height: 100vh;
     width: 100vw;
@@ -968,12 +969,5 @@ footer {
     8.6px 3.8px 10px rgba(0, 0, 0, 0.078),
     69px 30px 80px rgba(0, 0, 0, 0.12);
   
-    &:hover{
-      transform:translateY(-5px)
-    }
-    &:hover img {
-      transform: scale(1.1);
-      top: -30px; ;
-    }
   }
 }
