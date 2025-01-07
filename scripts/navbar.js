@@ -38,7 +38,7 @@ function SmallNav() {
             <div class="side-nav-links">
                 <a href="index.html" class="">Home</a>
                 <a href="index.html#restaurants" class="">Restaurants</a>
-                <a href="#" class="">Orders</a>
+                <a href="login.html" class="">Orders</a>
             </div>
         </div>`;
 
