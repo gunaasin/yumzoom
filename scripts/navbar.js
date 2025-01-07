@@ -7,14 +7,14 @@ function BigNav() {
     <div class="nav-links">
       <a href="index.html" class="active animationSecond">Home</a>
       <a href="index.html#restaurants" class="animationSecond">Restaurants</a>
-      <a href="#" class="animationThree">Orders</a>
+      <a href="login.html" class="animationThree">Orders</a>
     </div>
     <div class="nav-icons animationFive">
       <input class="search-bar " id="search-bar" type="text" placeholder="Search for restaurants or cuisines...">
       <i id="search-icon" class="fa-solid fa-magnifying-glass"></i>
       <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
       <a href="user.html"><i class="fas fa-user"></i>
-      <a href="login.html"><i class="fa-solid fa-gear"></i></a>
+      <a href=""><i class="fa-solid fa-gear"></i></a>
     </div>`;
 }
 
@@ -62,6 +62,8 @@ function SmallNav() {
         }
     });
 }
+
+
 
 
 function renderNavbar() {

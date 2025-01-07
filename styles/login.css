@@ -1,12 +1,14 @@
-/* Form Styles */
+/* Form Styles*/
+
 .container {
-  padding: 50px ;
+    padding: 50px ;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background: linear-gradient(135deg, #fff5f5 0%, #fff0ea 100%);
-  }
+  } 
+
   
   .form-container {
     overflow: hidden;
@@ -32,6 +34,7 @@
     margin: 0px;
   }
   .main-form{
+    margin-top: 10px;
     z-index: 1;
     padding: 1.5rem;
   }
@@ -247,4 +250,22 @@
 
 .terms a:hover {
   text-decoration: underline;
+}
+
+@media (max-width:640px) {
+  .container {
+    padding: 10px ;
+    min-height: 100vh;
+  } 
+
+  .form-container {
+    min-height: 70vh;
+  }
+  .main-form{
+    margin-top: 25px;
+  }
+}
+/* xsm*/
+@media (max-width: 475px) {
+    
 }
