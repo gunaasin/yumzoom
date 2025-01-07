@@ -64,8 +64,6 @@ function SmallNav() {
 }
 
 
-
-
 function renderNavbar() {
     if (window.innerWidth > 768) {
         BigNav();
