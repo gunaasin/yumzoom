@@ -831,7 +831,7 @@ footer {
   header {
     background-color: var(--background-color);
     height: 100vh;
-    width: 99vw;
+    width: 100vw;
     overflow-x: hidden;
     display: flex;
     align-items: space-around;
@@ -849,7 +849,7 @@ footer {
   
   .left-hero {
     z-index: 22;
-    width: 99%;
+    width: 100%;
     position: relative;
     top: -80px;
     display: flex;
@@ -914,7 +914,7 @@ footer {
   
   .right-hero {
     z-index: 22;
-    width: 99%;
+    width: 100%;
   }
   
   .right-hero img {
