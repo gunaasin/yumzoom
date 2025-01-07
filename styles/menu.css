@@ -343,6 +343,35 @@
 
 .food-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
     gap: 32px;
+}
+
+@media (max-width:768px) {
+    .InputContainer {
+        width: 90%;
+        height: 70px;
+    }
+}
+/* sm */
+@media (max-width:640px) {
+    .InputContainer {
+        width: 95%;
+        height: 70px;
+    }
+    .food-info {
+        padding: 10px;
+    }
+    .food-container {
+        margin: 40px auto;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 475px) {
+    .food-card {
+        width: 95vw;
+        height: 365px;
+    
+    }
 }
