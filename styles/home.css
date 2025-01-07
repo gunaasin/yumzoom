@@ -444,7 +444,6 @@ footer {
     background-color: var(--background-color);
     height: 100vh;
     width: 100vw;
-    overflow-x: hidden;
     display: flex;
     align-items: space-around;
     justify-content: center;
@@ -569,7 +568,6 @@ footer {
     background-color: var(--background-color);
     height: 100vh;
     width: 100vw;
-    overflow-x: hidden;
     flex-wrap: wrap;
     align-items: space-around;
     justify-content: center;
@@ -717,7 +715,6 @@ footer {
     background-color: var(--background-color);
     height: 100vh;
     width: 100vw;
-    overflow-x: hidden;
     display: flex;
     align-items: space-around;
     justify-content: center;
@@ -840,7 +837,6 @@ footer {
     background-color: var(--background-color);
     height: 100vh;
     width: 100vw;
-    overflow-x: hidden;
     display: flex;
     align-items: space-around;
     justify-content: center;
