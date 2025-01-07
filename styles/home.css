@@ -104,8 +104,8 @@ header {
 
 }
 .svg svg {
-  width: 100%;
-  height: 110%;
+  width: 100vw;
+  height: 10%;
   left: 0;
   top: 0;
   position: absolute;
@@ -113,7 +113,7 @@ header {
 } */
 
 
-header .svg {
+ header .svg {
   width: 100%;
   margin: 0;
   padding: 0;
@@ -129,7 +129,7 @@ header .svg> :first-child {
   margin-top: 30px;
   position: relative;
   bottom: -6.5px;
-}
+} 
 
 
 
@@ -235,6 +235,7 @@ header .svg> :first-child {
 }
 
 .restaurant-card {
+  text-decoration: none;
   background-color: var(--background-color);
   border-radius: 15px 15px 15px 15px;
   overflow: hidden;
@@ -329,4 +330,623 @@ footer {
     opacity: 1;
     transform: translateY(0px) scale(1);
  }
+}
+
+
+/* xl */
+@media (max-width:1280px) {
+  * Hero Section */
+  header {
+    background-color: var(--background-color);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 60px;
+  }
+  
+  
+  .hero {
+    display: flex;
+    color: var(--background-color);
+  }
+  
+  .left-hero {
+    z-index: 22;
+    width: 40vw;
+    display: flex;
+    text-align: left;
+    padding: 40px;
+    align-items: start;
+    flex-direction: column;
+    /* justify-content: center; */
+  }
+  
+  .left-hero button {
+    margin: 1.5rem 0;
+    padding: 1rem 0.5rem;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    border-radius: 14px 14px 0px 14px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 450;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: var(--background-color);
+      color: var(--primary-color);
+    }
+  
+    &:hover span {
+      background-color: var(--primary-color);
+      color: var(--background-color);
+    }
+  }
+  
+  .left-hero button span {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    font-size: 18px;
+    font-weight: 550;
+    border-radius: 5px 5px 0px 5px;
+    padding: 2px 6px;
+    margin: 0px 3px;
+  }
+  
+  .left-hero h3 {
+    font-family: "Modern Antiqua", serif;
+    color: var(--success-color);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .left-hero h1 {
+    font-size: 4rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+  }
+  
+  .left-hero p {
+    color: rgb(54, 53, 53);
+    font-size: 16px;
+  }
+  
+  .right-hero {
+    z-index: 22;
+    width: 55vw;
+  }
+  
+  .right-hero img {
+    width: 80%;
+  
+    /* box-shadow:
+        2.6px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+        6.2px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+        11.6px 12.5px 10px rgba(0, 0, 0, 0.035),
+        20.8px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+        38.9px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+        93px 100px 80px rgba(0, 0, 0, 0.07)
+      ; */
+  }
+  
+  
+
+  
+   header .svg {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    position: absolute;
+    bottom: -150;
+    left: 0;
+    z-index: 1;
+  
+  }
+  
+  header .svg> :first-child {
+    margin-top: 30px;
+    position: relative;
+    bottom: -6.5px;
+  } 
+  
+}
+/* lg */
+@media (max-width:1024px) {
+
+  header {
+    background-color: var(--background-color);
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    display: flex;
+    align-items: space-around;
+    justify-content: center;
+    text-align: center;
+    margin-top: 60px;
+  }
+  
+  
+  .hero {
+    display: flex;
+    flex-direction: column-reverse;
+    color: var(--background-color);
+  }
+  
+  .left-hero {
+    z-index: 22;
+    width: 99%;
+    position: relative;
+    top: -100px;
+    display: flex;
+    text-align: left;
+    padding: 40px;
+    align-items: start;
+    flex-direction: column;
+    /* justify-content: center; */
+  }
+  
+  .left-hero button {
+    margin: 1.5rem 0;
+    padding: 1rem 0.5rem;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    border-radius: 14px 14px 0px 14px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 450;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: var(--background-color);
+      color: var(--primary-color);
+    }
+  
+    &:hover span {
+      background-color: var(--primary-color);
+      color: var(--background-color);
+    }
+  }
+  
+  .left-hero button span {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    font-size: 18px;
+    font-weight: 550;
+    border-radius: 5px 5px 0px 5px;
+    padding: 2px 6px;
+    margin: 0px 3px;
+  }
+  
+  .left-hero h3 {
+    font-family: "Modern Antiqua", serif;
+    color: var(--success-color);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .left-hero h1 {
+    font-size: 4rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+  }
+  
+  .left-hero p {
+    color: rgb(54, 53, 53);
+    font-size: 16px;
+  }
+  
+  .right-hero {
+    z-index: 22;
+    width: 99%;
+  }
+  
+  .right-hero img {
+    width: 60%;
+    position: relative;
+    top: 0px;
+    left: 150px;
+  }
+  
+  
+  
+   header .svg {
+    width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    position: absolute;
+    /* bottom: -10; */
+    top: -100px;
+    left: 0;
+    z-index: 1;
+  
+  }
+  .svg svg{
+    height: 400px;
+  }
+  
+  header .svg> :first-child {
+    margin-top: 0px;
+    position: relative;
+    bottom: -6.7px;
+  } 
+  
+}
+/* md */
+@media (max-width:768px) {
+  header {
+    background-color: var(--background-color);
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    display: flex;
+    align-items: space-around;
+    justify-content: center;
+    text-align: center;
+    margin-top: 60px;
+  }
+  
+  
+  .hero {
+    display: flex;
+    flex-direction: column-reverse;
+    color: var(--background-color);
+  }
+  
+  .left-hero {
+    z-index: 22;
+    width: 99%;
+    position: relative;
+    top: -80px;
+    display: flex;
+    text-align: left;
+    padding: 40px;
+    align-items: start;
+    flex-direction: column;
+    /* justify-content: center; */
+  }
+  
+  .left-hero button {
+    margin: 1.5rem 0;
+    padding: 1rem 0.5rem;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    border-radius: 14px 14px 0px 14px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 450;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: var(--background-color);
+      color: var(--primary-color);
+    }
+  
+    &:hover span {
+      background-color: var(--primary-color);
+      color: var(--background-color);
+    }
+  }
+  
+  .left-hero button span {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    font-size: 18px;
+    font-weight: 550;
+    border-radius: 5px 5px 0px 5px;
+    padding: 2px 6px;
+    margin: 0px 3px;
+  }
+  
+  .left-hero h3 {
+    font-family: "Modern Antiqua", serif;
+    color: var(--success-color);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .left-hero h1 {
+    font-size: 4rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+  }
+  
+  .left-hero p {
+    color: rgb(54, 53, 53);
+    font-size: 16px;
+  }
+  
+  .right-hero {
+    z-index: 22;
+    width: 99%;
+  }
+  
+  .right-hero img {
+    width: 70%;
+    position: relative;
+    top: 50px;
+    left: 100px;
+  }
+  
+  
+  
+   header .svg {
+    width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    position: absolute;
+    /* bottom: -10; */
+    top: -100px;
+    left: 0;
+    z-index: 1;
+  
+  }
+  .svg svg{
+    height: 400px;
+  }
+  
+  header .svg> :first-child {
+    margin-top: 0px;
+    position: relative;
+    bottom: -6.7px;
+  } 
+}
+/* sm */
+@media (max-width:640px) {
+  header {
+    background-color: var(--background-color);
+    height: 100vh;
+    width: 99vw;
+    overflow-x: hidden;
+    display: flex;
+    align-items: space-around;
+    justify-content: center;
+    text-align: center;
+    margin-top: 60px;
+  }
+  
+  
+  .hero {
+    display: flex;
+    flex-direction: column-reverse;
+    color: var(--background-color);
+  }
+  
+  .left-hero {
+    z-index: 22;
+    width: 99%;
+    position: relative;
+    top: -80px;
+    display: flex;
+    text-align: left;
+    padding: 30px;
+    align-items: start;
+    flex-direction: column;
+    /* justify-content: center; */
+  }
+  
+  .left-hero button {
+    margin: 1.5rem 0;
+    padding: 1rem 0.5rem;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    border-radius: 14px 14px 0px 14px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 450;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: var(--background-color);
+      color: var(--primary-color);
+    }
+  
+    &:hover span {
+      background-color: var(--primary-color);
+      color: var(--background-color);
+    }
+  }
+  
+  .left-hero button span {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    font-size: 18px;
+    font-weight: 550;
+    border-radius: 5px 5px 0px 5px;
+    padding: 2px 6px;
+    margin: 0px 3px;
+  }
+  
+  .left-hero h3 {
+    font-family: "Modern Antiqua", serif;
+    color: var(--success-color);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .left-hero h1 {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+  }
+  
+  .left-hero p {
+    color: rgb(54, 53, 53);
+    font-size: 16px;
+  }
+  
+  .right-hero {
+    z-index: 22;
+    width: 99%;
+  }
+  
+  .right-hero img {
+    width: 80%;
+    position: relative;
+    top: -20px;
+    left: 60px;
+  }
+  
+  
+  
+   header .svg {
+    width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    position: absolute;
+    /* bottom: -10; */
+    top: 0px;
+    left: 0;
+    z-index: 1;
+  
+  }
+  .svg svg{
+    height: 300px;
+  }
+  
+  header .svg> :first-child {
+    margin-top: 0px;
+    position: relative;
+    bottom: -6.7px;
+  } 
+}
+/* xsm*/
+@media (max-width: 475px) {
+  header {
+    background-color: var(--background-color);
+    height: 100vh;
+    width: 99vw;
+    overflow-x: hidden;
+    display: flex;
+    align-items: space-around;
+    justify-content: center;
+    text-align: center;
+    margin-top: 60px;
+  }
+  
+  
+  .hero {
+    display: flex;
+    flex-direction: column-reverse;
+    color: var(--background-color);
+  }
+  
+  .left-hero {
+    z-index: 22;
+    width: 99%;
+    position: relative;
+    top: -80px;
+    display: flex;
+    text-align: left;
+    padding: 30px;
+    align-items: start;
+    flex-direction: column;
+    /* justify-content: center; */
+  }
+  
+  .left-hero button {
+    margin: 1.5rem 0;
+    padding: 1rem 0.5rem;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    border-radius: 14px 14px 0px 14px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 450;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: var(--background-color);
+      color: var(--primary-color);
+    }
+  
+    &:hover span {
+      background-color: var(--primary-color);
+      color: var(--background-color);
+    }
+  }
+  
+  .left-hero button span {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    font-size: 18px;
+    font-weight: 550;
+    border-radius: 5px 5px 0px 5px;
+    padding: 2px 6px;
+    margin: 0px 3px;
+  }
+  
+  .left-hero h3 {
+    font-family: "Modern Antiqua", serif;
+    color: var(--success-color);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .left-hero h1 {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+  }
+  
+  .left-hero p {
+    color: rgb(54, 53, 53);
+    font-size: 16px;
+  }
+  
+  .right-hero {
+    z-index: 22;
+    width: 99%;
+  }
+  
+  .right-hero img {
+    width: 90%;
+    position: relative;
+    top: -20px;
+    left: 50px;
+    padding: 20px;
+  }
+  
+  
+  
+   header .svg {
+    width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    position: absolute;
+    /* bottom: -10; */
+    top: 100px;
+    left: 0;
+    z-index: 1;
+  
+  }
+  .svg svg{
+    height: 200px;
+  }
+  
+  header .svg> :first-child {
+    margin-top: 0px;
+    position: relative;
+    bottom: -6.7px;
+  }   
 }

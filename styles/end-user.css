@@ -205,6 +205,14 @@
     padding: 1.5rem;
     border-radius: 8px;
 }
+.section-header{
+    margin-bottom: 10px ;
+}
+.section-header a{
+    color: var(--primary-color);
+    margin:5px 0px 15px ;
+    text-decoration: none;
+}
 
 .restaurant-grid {
     display: grid;
@@ -239,7 +247,7 @@
 }
 
 .rating {
-    color: var(--warning-color);
+    color: var(--primary-color);
     margin-bottom: 0.5rem;
 }
 
