@@ -136,7 +136,7 @@ header .svg> :first-child {
 /* Categories Section */
 .categories {
   background-color: var(--background-color);
-  padding: 3rem 5%;
+  padding: 3rem 2rem;
 }
 
 .categories-h2 {
@@ -153,6 +153,7 @@ header .svg> :first-child {
 }
 
 .category-list {
+  width: 100%;
   margin-top: 50px;
   display: flex;
   justify-content: space-evenly;
@@ -169,7 +170,6 @@ header .svg> :first-child {
   align-items: center;
   position: relative;
   gap: 0.5rem;
- 
   cursor: pointer;
   box-shadow:
   8.6px 3.8px 10px rgba(0, 0, 0, 0.078),
@@ -294,25 +294,7 @@ footer {
   margin-top: 2rem;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
 
-  .search-bar input {
-    width: 250px;
-  }
-
-  .category-list {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .category-item {
-    flex: 0 0 calc(50% - 1rem);
-  }
-}
 
 
 /* autoshow aniamtion */
@@ -580,6 +562,7 @@ footer {
   } 
   
 }
+
 /* md */
 @media (max-width:768px) {
   header {
@@ -587,7 +570,7 @@ footer {
     height: 100vh;
     width: 100vw;
     overflow-x: hidden;
-    display: flex;
+    flex-wrap: wrap;
     align-items: space-around;
     justify-content: center;
     text-align: center;
@@ -702,13 +685,38 @@ footer {
     position: relative;
     bottom: -6.7px;
   } 
+
+  .category-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    top: 40px;
+  }
+
+  .category-item {
+    flex: 0 0 calc(100% - 1rem);
+    &:hover{
+      transform:translateY(-5px)
+    }
+    &:hover img {
+      transform: scale(1.1);
+      top: 0px; ;
+    }
+  }
+
+  .menu2 img{
+    transition: 0.3s ease;
+    position: absolute;
+    top: 0px;
+    right: -30px;
+    width: 150px;
+  }
 }
 /* sm */
 @media (max-width:640px) {
   header {
     background-color: var(--background-color);
     height: 100vh;
-    width: 99vw;
+    width: 100vw;
     overflow-x: hidden;
     display: flex;
     align-items: space-around;
@@ -949,4 +957,27 @@ footer {
     position: relative;
     bottom: -6.7px;
   }   
+
+  .category-item {
+    width: 90;
+    /* height: 120px; */
+    border-radius: 15px;
+    background-color: var(--background-color);
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 0rem;
+    cursor: pointer;
+    box-shadow:
+    8.6px 3.8px 10px rgba(0, 0, 0, 0.078),
+    69px 30px 80px rgba(0, 0, 0, 0.12);
+  
+    &:hover{
+      transform:translateY(-5px)
+    }
+    &:hover img {
+      transform: scale(1.1);
+      top: -30px; ;
+    }
+  }
 }
