@@ -15,6 +15,10 @@
 }
 
 * {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+
   margin: 0;
   padding: 0;
   /* overflow-x: hidden; */
@@ -22,6 +26,10 @@
   box-sizing: border-box;
   /* font-family: system-ui, -apple-system, sans-serif; */
   font-family: "Poppins", serif;
+}
+
+html ,body{
+  touch-action: manipulation;
 }
 
 body {
@@ -43,7 +51,7 @@ body {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: var(--gray-color);
-} 
+}
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
