@@ -1,9 +1,11 @@
 /* Footer Styles */
 .footer {
+  z-index: 99;
     background-color:var(--background-color);
     color: white;
     padding: 48px 0 32px;
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", serif;
+    overflow-x: hidden;
   }
   
   .footer-content {

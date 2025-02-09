@@ -1,7 +1,9 @@
 const welcome = document.querySelector(".welcome");
 const welcomeLogin = document.querySelector(".welcome-login");
 const form = document.querySelector("#form");
-
+import API from "./end-point.js";
+import {showNotification} from "./notification.js";
+import { parseJwt } from "./parseValue.js";
 
 const signInHTML = `
     <div class="form-group">
@@ -12,55 +14,55 @@ const signInHTML = `
         <label for="password" class="form-label">Password</label>
         <input type="password" id="password" name="password" class="form-input" required>
     </div>
-    <button type="submit" class="submit-button">Sign In</button>
+    <button id="signin" class="submit-button" type="button">Sign In</button>
     <a href="#" class="forgot-password">Forgot your password?</a>
-    <button id="createAccount" class="swith">(Or) create an account</button>
+    <button id="createAccount" class="swith">(or) Create an account</button>
 `;
 
 const signUpHTML = `
     <div class="user-type-container">
         <div class="user-type-option">
-            <input type="radio" name="userType" id="user" value="user" class="user-type-input" checked>
-            <label for="user" class="user-type-label">User</label>
+            <input type="radio" name="userType" id="user" value="CUSTOMER" class="user-type-input" checked>
+            <label for="user" class="user-type-label">Customer</label>
         </div>
         <div class="user-type-option">
-            <input type="radio" name="userType" id="restaurant" value="restaurant" class="user-type-input">
+            <input type="radio" name="userType" id="restaurant" value="RESTAURANT" class="user-type-input">
             <label for="restaurant" class="user-type-label">Restaurant</label>
         </div>
         <div class="user-type-option">
-            <input type="radio" name="userType" id="deliveryman" value="deliveryman" class="user-type-input">
-            <label for="deliveryman" class="user-type-label">Delivery</label>
+            <input type="radio" name="userType" id="deliveryman" value="DELIVERY_AGENT" class="user-type-input">
+            <label for="deliveryman" class="user-type-label">Delivery Agent</label>
         </div>
     </div>
     <div class="name-fields">
         <div class="form-group">
             <label for="userName" class="form-label">User Name</label>
-            <input type="text" id="userName" name="userName" class="form-input" >
+            <input type="text" required id="userName" name="userName" class="form-input" >
         </div>
         <div class="form-group">
             <label for="Name" class="form-label">Name</label>
-            <input type="text" id="Name" name="Name" class="form-input" >
+            <input type="text"  required id="Name" name="Name" class="form-input" >
         </div>
     </div>
     <div class="form-group">
         <label for="email" class="form-label">Email Address</label>
-        <input type="email" id="email" name="email" class="form-input" >
+        <input type="email" required id="email" name="email" class="form-input" >
+    </div>
+        <div class="form-group">
+        <label for="mobile" class="form-label">Mobile</label>
+        <input type="tel" required id="mobile" name="mobile" class="form-input" >
     </div>
     <div class="form-group">
         <label for="password" class="form-label">Password</label>
-        <input type="password" id="password" name="password" class="form-input"  
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+        <input type="password" required id="password" name="password" class="form-input"  
+                
                 title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
     </div>
-    <div class="form-group">
-        <label for="confirmPassword" class="form-label">Confirm Password</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" >
-    </div>
     <div class="terms">
-        <input type="checkbox" id="terms" name="terms" >
+        <input type="checkbox"  required id="terms" name="terms" >
         <label for="terms">I agree to the <a href="">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
     </div>
-    <button type="submit" class="submit-button">Create Account</button>
+    <button id="signup" class="submit-button" type="button">Create Account</button>
     <br>
     <br>
     <button class="swith" id="alreadyAccountIsthere">Already have an account ? Sign in</button>
@@ -74,6 +76,9 @@ const logo = `
     <path d="M2 16l20 6-6-20A20 20 0 0 0 2 16"></path>
 </svg>`;
 
+
+// pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+
 function loadSignInForm() {
     welcome.innerHTML = "Welcome Back";
     welcomeLogin.innerHTML = "Sign in to continue";
@@ -85,6 +90,61 @@ function loadSignInForm() {
             loadSignUpForm();
         });
     }
+
+
+    const signinBTN = document.getElementById("signin");
+    signinBTN.addEventListener("click", () => {
+        const email = document.getElementById("email").value;
+        const password= document.getElementById('password').value;
+        const signupdata = {
+            email,
+            password
+        }
+
+        async function postSignIn(signupdata) {
+            signinBTN.innerText = "";
+            signinBTN.innerHTML = `<div class="loader"/>`;
+            try{
+                const response = await fetch(`${API}/signin`,{
+                    method:'POST',
+                    headers:{
+                        'Content-Type':'application/json',
+                    },
+                    body:JSON.stringify(signupdata)
+                });
+
+                if(!response.ok){
+                    showNotification("Enter correct Credentials !!")
+                }
+                const data = await response.json();
+                if(!response.ok){
+                    showNotification(data.message);
+                    return;
+                }else{
+                    signinBTN.innerText = "Sign in";
+                    signinBTN.innerHTML = "";
+                    localStorage.setItem("key", JSON.stringify(data));
+                    const {role} = parseJwt();
+                    if(role==="RESTAURANT"){
+                        
+                        window.location="/restaurant.html";
+                    }else if(role==="DELIVERY_AGENT"){
+                        window.location="/agent.html";
+                    }else{
+                        window.location="/";
+                    }
+                }
+
+            }catch(error){
+               throw new Error("wrong credentials");
+            }
+        }
+
+        postSignIn(signupdata);
+    })
+
+
+
 }
 
 function loadSignUpForm() {
@@ -98,6 +158,77 @@ function loadSignUpForm() {
             loadSignInForm();
         });
     }
+
+    function getSelectedUserType() {
+        return document.querySelector('input[name="userType"]:checked').value;
+    }
+
+    getSelectedUserType();
+    const radioButtons = document.querySelectorAll('input[name="userType"]');
+    radioButtons.forEach(radio => { radio.addEventListener('change', getSelectedUserType); });
+
+    const signUPBTN  = document.getElementById("signup");
+    signUPBTN.addEventListener("click", (event) => {
+     
+        event.preventDefault(); 
+        const role = getSelectedUserType();
+        const username = document.getElementById("userName").value;
+        const name = document.getElementById("Name").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("mobile").value;
+        const password = document.getElementById("password").value;
+        const signupData = {
+            name,
+            username,
+            password,
+            email,
+            phone,
+            role
+        };
+        async function postSignUp(signupData) {
+            signUPBTN.innerHTML = `<div class="loader"/>`;
+            signUPBTN.innerText = "" ;
+            try {
+                const response = await fetch(`${API}/signup`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(signupData)
+                });
+                if (!response.ok) {
+                    throw new Error("sumthing wrong");
+                }else{
+                    signUPBTN.innerHTML = "";
+                    signUPBTN.innerText = "signUp" ;
+                    loadSignInForm();
+                }
+
+                return await response.json();
+            } catch (error) {
+                console.error(error, "in post sing in");
+            }
+        }
+        postSignUp(signupData).then((res)=>{
+            showNotification(res.message);
+        }).catch((error)=>{
+            console.log(error);
+        })
+    })
 }
 
 loadSignInForm();
+
+const loginBtn = document.getElementById('loginBtn');
+const loginPopup = document.getElementById('loginPopup');
+
+
+loginBtn.addEventListener("click", () => {
+    loginPopup.style.display = 'flex';
+});
+
+window.addEventListener("click", (event) => {
+    if (event.target === loginPopup) {
+        loginPopup.style.display = 'none';
+    }
+});

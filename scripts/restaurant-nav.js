@@ -1,19 +1,39 @@
+import { loadRestaurantAddressAndUpdateInfo } from "./restaurent-address-info.js";
 
-const nav = document.querySelector('.nav');
+
+const nav = document.querySelector('.restaurant-nav');
 let sideNavVisible = false;
 function BigNav() {
     nav.innerHTML = ` 
-    <a href="index.html" class="logo animationFirst"><img src="./assets/logo.png" alt="logo"></a>
-    <div class="nav-links">
-      <a href="index.html" class="active animationSecond">Home</a>
-      <a href="index.html#restaurants" class="animationSecond">Restaurants</a>
-      <a href="login.html" class="animationThree">Orders</a>
+    <div class="logo animationFirst">
+        <img src="./assets/logo.png" alt="logo" class="yumzoom"> 
+        <i class="fa-solid fa-xmark"></i>
+        <h3 id="restaurant-name">Name of restaurant</h3>
     </div>
-    <div class="nav-icons animationFive">
-      <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-      <a href="user.html"><i class="fas fa-user"></i>
+
+     <div class="nav-icons animationFive">
+      <i class="fas fa-user"></i>
       <a href=""><i class="fa-solid fa-gear"></i></a>
-    </div>`;
+    </div>
+    `;
+
+    document.querySelector(".fa-user").addEventListener('click',()=>{
+        console.log("hello")
+        document.getElementById("addressAndInfo").classList.add("active");
+        loadRestaurantAddressAndUpdateInfo();
+        document.getElementById("overview").classList.remove("active");
+        document.getElementById("orders").classList.remove("active");
+    });
+
+}
+
+
+export function loadRestaurantName(name){
+   try{
+    document.getElementById('restaurant-name').innerHTML = name;
+   }catch(error){
+    console.warn('Not for mobile');
+   }
 }
 
 function SmallNav() {
@@ -22,19 +42,19 @@ function SmallNav() {
 
         <div class="nav-icons ">
             <i id="toggole-btn"class="fa-solid fa-bars"></i>
-            
         </div>
         <div class="side-nav">
             <div class="side-nav-icons">
-                <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-                <a href="user.html"><i class="fas fa-user"></i>
-                <a href="login.html"><i class="fa-solid fa-gear"></i></a>
+                <p><i class="fa-solid fa-gear"></i></p>
             </div>
-            <div class="side-nav-links">
+
+              <div class="side-nav-links">
                 <a href="index.html" class="">Home</a>
                 <a href="index.html#restaurants" class="">Restaurants</a>
                 <a href="login.html" class="">Orders</a>
             </div>
+          
+
         </div>`;
 
     const toggoleBtn = document.getElementById('toggole-btn');
@@ -56,7 +76,16 @@ function SmallNav() {
             sideNavVisible = false; 
         }
     });
+
+    document.querySelector(".fa-gear").addEventListener('click',()=>{
+        document.getElementById("addressAndInfo").classList.add("active");
+        loadRestaurantAddressAndUpdateInfo();
+        document.getElementById("overview").classList.remove("active");
+        document.getElementById("orders").classList.remove("active");
+    });
 }
+
+
 
 
 function renderNavbar() {

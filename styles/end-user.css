@@ -141,7 +141,7 @@
     padding: 0.75rem 1rem;
     cursor: pointer;
     display: flex;
-    background-color: var(--light-gray);
+
     align-items: center;
     gap: 0.5rem;
     border-radius: 4px;

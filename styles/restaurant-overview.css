@@ -1,0 +1,270 @@
+/* Content Grid */
+.content-grid {
+    width: 100%;
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Orders Section */
+.orders-section {
+    width: 65%;
+    background: var(--bg-secondary);
+    border-radius:4px;
+    padding: 1rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.restaurant-info-section h3{
+    font-size: 16px;
+    color: rgb(52, 52, 52);
+}
+.restaurant-info-section span{
+    font-size: 16px;
+    color: rgb(82, 82, 82);
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.orders-container {
+    display: grid;
+    gap: 1rem;
+}
+
+.order-card {
+    background: var(--bg-primary);
+    padding: 1rem;
+    border-radius: 0.75rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    transition: var(--transition);
+}
+
+.order-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.order-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-align: center;
+    min-width: 100px;
+}
+
+.status-new {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.status-preparing {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-ready {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.order-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.order-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.action-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    min-width: 120px;
+    color: white;
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-accept {
+    background: var(--primary-color);
+}
+
+.btn-ready {
+    background: var(--success-color);
+}
+
+.btn-complete {
+    background: var(--warning-color);
+}
+
+/* Side Sections */
+.side-sections {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.popular-items-section,
+.revenue-section {
+    background: var(--bg-secondary);
+    border-radius:4px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.popular-items-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.popular-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: var(--bg-primary);
+    border-radius: 0.5rem;
+    transition: var(--transition);
+}
+
+.popular-item:hover {
+    transform: translateX(4px);
+}
+
+.popular-item strong {
+    color: var(--primary-color);
+}
+
+/* Chart Styles */
+.chart-container {
+    margin-top: 1.5rem;
+}
+
+.chart-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    height: 200px;
+}
+
+.chart-y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    padding-right: 0.5rem;
+}
+
+.chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.75rem;
+    padding-bottom: 1.5rem;
+}
+
+.chart-bar {
+    flex: 1;
+    background: #f8b2a9;
+    border-radius: 4px 4px 0 0;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.chart-bar:hover {
+    background: var(--primary-color);
+}
+
+.chart-x-axis {
+    grid-column: 2;
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    
+
+/* Content Grid */
+.content-grid {
+    flex-direction:column;
+}
+/* Orders Section */
+.orders-section {
+  width: 100%;
+}
+
+.side-sections{
+    width: 100%;
+}
+}
+
+@media (max-width: 768px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 1rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .order-actions {
+        flex-direction: column;
+    }
+
+    .search-bar input {
+        width: 200px;
+    }
+}

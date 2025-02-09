@@ -43,7 +43,7 @@
     height: 100%;
     border: none;
     outline: none;
-    font-size:1em;
+    font-size: 1em;
     caret-color: rgb(255, 81, 0);
 }
 
@@ -130,12 +130,13 @@
     background: white;
     border-radius: 16px;
     overflow: hidden;
-    transition:  0.4s ease-in-out;
+    transition: 0.4s ease-in-out;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
     &:hover .food-image {
         transform: scale(1.04);
     }
-    
+
     &:hover {
         transform: translateY(-4px);
     }
@@ -146,7 +147,7 @@
 
 .food-image {
     width: 100%;
-    transition:  0.2s ease-in-out;
+    transition: 0.2s ease-in-out;
     height: 250px;
     object-fit: cover;
 }
@@ -330,7 +331,7 @@
     }
 
 
-} 
+}
 
 /* ftbyiuweiufywe fuyweiufy uisygtewiuyfg */
 
@@ -353,15 +354,18 @@
         height: 70px;
     }
 }
+
 /* sm */
 @media (max-width:640px) {
     .InputContainer {
         width: 95%;
         height: 70px;
     }
+
     .food-info {
         padding: 10px;
     }
+
     .food-container {
         margin: 40px auto;
         padding: 0 10px;
@@ -372,6 +376,6 @@
     .food-card {
         width: 95vw;
         height: 365px;
-    
+
     }
 }

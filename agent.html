@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YumZoom</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/end-user.css">
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/restaurent-nav.css">
+    <link rel="stylesheet" href="./styles/delivery-agent.css">
+    <link rel="stylesheet" href="./styles/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Modern+Antiqua&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="delivery-agent-nav"></nav>
+
+    <div class="dashboard-container">
+
+        <aside class="sidebar">
+            <div class="sidebar__header">
+                <img src="https://ui-avatars.com/api/?name=John+Doe" alt="Profile" class="sidebar__profile-img">
+                <div class="sidebar__profile-info">
+                    <h3 class="sidebar__name">John Doe</h3>
+                    <p class="sidebar__status sidebar__status--online">Online</p>
+                </div>
+            </div>
+            <ul class="sidebar-menu">
+                <li id="overview" class="animationFirst active"><i class="fas fa-home"></i> Dashboard</li>
+                <li id="orders" class="animationSecond"> <i class="fas fa-route"></i> Routes</li>
+                <li id="addressAndInfo" class="animationThree"><i class="fas fa-history"></i> History</li>
+                <li id="addfoodsection" class="animationFour"> <i class="fas fa-cog"></i> Settings</li>
+            </ul>
+        </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Header -->
+        <header class="header">
+            <div class="header__status">
+                <select class="header__status-select" id="deliveryStatus">
+                    <option value="available">Available</option>
+                    <option value="busy">Busy</option>
+                    <option value="offline">Offline</option>
+                </select>
+            </div>
+            <div class="header__stats">
+                <div class="header__stat">
+                    <i class="fas fa-star"></i>
+                    <span>4.8</span>
+                </div>
+                <div class="header__stat">
+                    <i class="fas fa-route"></i>
+                    <span>12.5 km</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Current Delivery -->
+        <section class="delivery">
+            <h2 class="delivery__title">Current Delivery</h2>
+            <div class="delivery__card">
+                <div class="delivery__header">
+                    <span class="delivery__order-id">#ORD-2023-1234</span>
+                    <span class="delivery__status delivery__status--in-progress">In Progress</span>
+                </div>
+                <div class="delivery__locations">
+                    <div class="delivery__location">
+                        <i class="fas fa-store"></i>
+                        <div class="delivery__location-details">
+                            <h4>Pickup Location</h4>
+                            <p>123 Restaurant St, City</p>
+                        </div>
+                    </div>
+                    <div class="delivery__location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="delivery__location-details">
+                            <h4>Delivery Location</h4>
+                            <p>456 Customer Ave, City</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="delivery__actions">
+                    <button class="delivery__btn delivery__btn--primary">
+                        <i class="fas fa-check"></i>
+                        Complete Delivery
+                    </button>
+                    <button class="delivery__btn delivery__btn--secondary">
+                        <i class="fas fa-phone"></i>
+                        Contact Customer
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Orders List -->
+        <section class="orders">
+            <h2 class="orders__title">Recent Orders</h2>
+            <div class="orders__list" id="ordersList">
+                <!-- Orders will be populated by JavaScript -->
+            </div>
+        </section>
+    </main>
+    </div>
+
+    <footer class="footer"></footer>
+    <script type="module" src="./scripts/delivery-agent.js"></script>
+</body>
+
+</html>

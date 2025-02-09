@@ -1,11 +1,10 @@
-/* Navigation */
+
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 5%;
   background-color: var(--background-color);
-  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
   position: fixed;
   width: 100%;
   top: 0;
@@ -15,7 +14,7 @@ nav {
 
 .logo img {
   cursor: pointer;
-  width: 140px;
+  width: 100px;
 }
 
 .nav-links a {
