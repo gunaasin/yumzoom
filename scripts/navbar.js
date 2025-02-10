@@ -3,10 +3,10 @@ const nav = document.querySelector('.nav');
 let sideNavVisible = false;
 function BigNav() {
     nav.innerHTML = ` 
-    <a href="index.html" class="logo animationFirst"><img src="./assets/logo.png" alt="logo"></a>
+    <a href="/home.html" class="logo animationFirst"><img src="./assets/logo.png" alt="logo"></a>
     <div class="nav-links">
-      <a href="index.html" class="active animationSecond">Home</a>
-      <a href="index.html#restaurants" class="animationSecond">Restaurants</a>
+      <a href="home.html" class="active animationSecond">Home</a>
+      <a href="home.html#restaurants" class="animationSecond">Restaurants</a>
       <a href="login.html" class="animationThree">Orders</a>
     </div>
     <div class="nav-icons animationFive">

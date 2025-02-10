@@ -177,8 +177,6 @@ export function renderMenuPage() {
     const submission = document.getElementById("submit_form");
     submission.addEventListener('click', (e) => {
         e.preventDefault();
-
-        console.log(itemId);
         const formData = new FormData(foodForm);
         const foodItem = {
             foodId: itemId,

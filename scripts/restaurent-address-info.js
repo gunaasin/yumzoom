@@ -1,13 +1,16 @@
+import API from "./end-point.js";
 import { showNotification } from "./notification.js";
+import { parseJwt } from "./parseValue.js";
+import { extractRestaurantId } from "./restaurant.js";
 export function loadRestaurantAddressAndUpdateInfo() {
-    
+
 
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = "../styles/restaurentInformation.css"; 
+    link.href = "../styles/restaurentInformation.css";
     document.head.appendChild(link);
     const addressHtml = ` 
-           <form id="restaurantForm" class="restaurant-form" onsubmit="handleSubmit(event)">
+           <form id="restaurantForm" class="restaurant-form"">
                 <div class="form-group animationThree">
                     <label for="name" class="form-label">Restaurant Name</label>
                     <input type="text" id="name" name="name" class="form-input" placeholder="Enter restaurant name" required>
@@ -41,18 +44,10 @@ export function loadRestaurantAddressAndUpdateInfo() {
                     </div>
                 </div>
 
-                <div class="custom-file-upload animationSix">
-                    <label for="imagePath" class="upload-label">
-                        <span id="fileName">Choose a file</span>
-                        <button type="button" class="upload-btn">Browse</button>
-                    </label>
-                    <input type="file" id="imagePath" name="imagePath" class="hidden-file-input" accept="image/*">
-                    <div class="image-preview-container" id="imagePreview">
-                        <img id="previewImage" class="image-preview" src="" alt="Preview" style="display: none;">
-                        <span class="image-preview-text">No image selected</span>
-                    </div>
+                <div class="form-group animationSix">
+                    <label for="imag" class="form-label">Image Path</label>
+                    <input type="text" id="imagePath" name="imag" class="form-input" placeholder="https://example/profile.png" required>
                 </div>
-    
     
                 <button type="button" class="address-toggle animationSix" >
                     <span class="address-toggle__text">Update Address</span>
@@ -81,23 +76,24 @@ export function loadRestaurantAddressAndUpdateInfo() {
                     </div>
                 </div>
     
-                <button type="submit" class="submit-button animationSix">Update Restaurant Details</button>
+                <button type="button" id="submit-info" class="submit-button animationSix">Update Restaurant Details</button>
            </form>`
 
     const mainContent = document.querySelector(".main-content");
-    mainContent.innerHTML = " ";
+    mainContent.innerHTML = "";
     mainContent.innerHTML = addressHtml;
+    const submitInfobtn = document.getElementById("submit-info");
+    const {token} = parseJwt();
+    const restaurantForm = document.getElementById("restaurantForm");
 
-    function handleSubmit(event) {
-        event.preventDefault();
-
+    submitInfobtn.addEventListener('click', async() => {
         const formData = {
-            restaurantId: document.getElementById('restaurantId').value,
+            restaurantId: extractRestaurantId(),
             name: document.getElementById('name').value,
             phone: document.getElementById('phone').value,
             cusineType: document.getElementById('cusineType').value,
             isActive: document.getElementById('isActive').checked,
-            imagePath: document.getElementById('imagePath').files[0]?.name || '',
+            image: document.getElementById('imagePath').value,
             addressRequestDTO: {
                 street: document.getElementById('street').value,
                 city: document.getElementById('city').value,
@@ -113,29 +109,40 @@ export function loadRestaurantAddressAndUpdateInfo() {
         }
 
         const pinCodeRegex = /^\d{6}$/;
-        if (!pinCodeRegex.test(formData.address.pinCode)) {
+        if (!pinCodeRegex.test(formData.addressRequestDTO.pinCode)) {
             showNotification('Please enter a valid 6-digit pin code');
             return;
         }
 
-        // Log the form data (in a real application, you would send this to a server)
-        console.log('Restaurant Update Data:', formData);
+        try{
+            const response = await fetch(`${API}/restaurant/updateRestaurantInfo`,{
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify(formData)
+            })
+            const res = await response.json();
+            if(!response.ok){
+                showNotification(res);
+                console.warn(`exception in ${response}`);
+                return;
+            }
+            showNotification(res.message);
+            restaurantForm.reset();
+        }catch(error){
+            console.warn("exception in address update info");
+        }
 
-        showNotification(`Information updated successfully!`)
-
-        // Reset the form
-        // event.target.reset();
 
         // Hide address section after form submission
         document.getElementById('addressSection').classList.remove('show');
         document.querySelector('.address-toggle').classList.remove('active');
-
-        // Reset image preview
-        document.getElementById('previewImage').style.display = 'none';
-        document.querySelector('.image-preview-text').style.display = 'block';
-
         console.log("information")
-    }
+    });
+
+
 
 
 
@@ -149,26 +156,6 @@ export function loadRestaurantAddressAndUpdateInfo() {
         this.value = this.value.replace(/[^\d]/g, '').slice(0, 6);
     });
 
-
-    // Handle image preview
-    document.getElementById("imagePath").addEventListener('click', (event) => {
-        const file = event.target.files[0];
-        const previewImage = document.getElementById('previewImage');
-        const previewText = document.querySelector('.image-preview-text');
-
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                previewImage.src = e.target.result;
-                previewImage.style.display = 'block';
-                previewText.style.display = 'none';
-            }
-            reader.readAsDataURL(file);
-        } else {
-            previewImage.style.display = 'none';
-            previewText.style.display = 'block';
-        }
-    })
 
     // Toggle address section
     document.querySelector(".address-toggle").addEventListener('click', () => {

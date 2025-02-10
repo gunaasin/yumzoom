@@ -9,6 +9,19 @@
     display: grid;
     gap: 1rem;
 }
+.image{
+    margin: 2rem;
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 1px solid gray;
+}
+
+.restaurant-image{
+    object-fit: fill;
+   
+}
 
 .order-card {
     background-color: var(--background-color);

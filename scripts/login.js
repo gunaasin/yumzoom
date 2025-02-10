@@ -131,7 +131,7 @@ function loadSignInForm() {
                     }else if(role==="DELIVERY_AGENT"){
                         window.location="/agent.html";
                     }else{
-                        window.location="/";
+                        window.location="/home.html";
                     }
                 }
 

@@ -174,8 +174,9 @@ export function renderOverview() {
                     }
                 });
 
-                if (!response.ok) {
-                    return new Error("incorrect credentials");
+                if (!response.ok && response.status === 403) {
+                    showNotification("session expired");
+                    window.location="/";
                 }
                 return await response.json();
             } catch (error) {

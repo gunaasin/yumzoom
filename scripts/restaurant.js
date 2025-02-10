@@ -19,7 +19,6 @@ document.getElementById("overview").addEventListener('click', () => {
     document.getElementById("ourmenu").classList.remove("active");
 });
 
-
 document.getElementById("addressAndInfo").addEventListener('click', () => {
     document.getElementById("addressAndInfo").classList.add("active");
     loadRestaurantAddressAndUpdateInfo();
@@ -41,7 +40,6 @@ document.getElementById("orders").addEventListener('click', () => {
     document.getElementById("addfoodsection").classList.remove("active");
     document.getElementById("ourmenu").classList.remove("active");
 })
-
 
 document.getElementById("addfoodsection").addEventListener('click', () => {
     document.getElementById("addfoodsection").classList.add("active");
@@ -69,12 +67,10 @@ document.getElementById("ourmenu").addEventListener('click', () => {
     document.getElementById("overview").classList.remove("active");
 });
 
-
-
-
 export function loadRestaurantIdAndInfo(data) {
     try {
-        document.querySelector(".image").innerHTML = data.image === null ? "" : `<img src="${data.image}" alt="restautrant img">`
+        console.log(data);
+        document.querySelector(".image").innerHTML = data.image === null ? "" : ` <img  class="restaurant-image" src="${data.image}" alt="">`;
         document.querySelector(".restaurant-id").innerHTML = data.restaurantId;
         document.querySelector(".status").innerHTML = data.isActive ? "Available" : "Closed";
         document.querySelector(".ratings").innerHTML = data.rating;
