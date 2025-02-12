@@ -1,15 +1,20 @@
-
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 5%;
-  background-color: var(--background-color);
+  background: transparent;
+  transition: background 0.5s ease, box-shadow 0.5s ease;
   position: fixed;
   width: 100%;
   top: 0;
   height: 70px;
   z-index: 1000;
+}
+
+.scrolled {
+  background: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .logo img {
@@ -80,7 +85,8 @@ nav {
   transition: 0.3s;
   font-size: 1rem;
   cursor: pointer;
-  color: var(--secondary-color);
+  color: rgb(92, 92, 92);
+
 
   &:hover {
     color: var(--primary-color);
@@ -181,7 +187,7 @@ nav {
   .search-bar {
     padding: 1rem;
     width: 300px;
-     text-overflow: ellipsis;
+    text-overflow: ellipsis;
     font-size: 1rem;
     padding: 0.75rem 1rem;
   }

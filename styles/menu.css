@@ -12,6 +12,7 @@
     width: 100%;
     height: 100px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     /* background-color: #e0e0e0; */
@@ -117,6 +118,44 @@
     transition: all 0.2s;
     background-color: var(--primary-color);
 }
+/* suggestions styles */
+#suggestions {
+    border-radius: 10px 10px;
+    top: 180px;
+    width: 68%;
+    z-index: 999;
+    border: 1px solid #ccc;
+    display: none;
+    position: absolute;
+    background: rgb(230, 230, 230);
+  }
+  
+  .suggestion-item {
+    padding: 8px;
+    border-bottom: 0.5px solid rgba(128, 128, 128, 0.267);
+    cursor: pointer;
+  }
+  
+  .suggestion-item:hover {
+    background: #ffffff;
+  }
+
+  .loader {
+    width: 40px;
+    aspect-ratio: 4;
+    --_g: no-repeat radial-gradient(circle closest-side,var(--background-color) 90%,#0000);
+    background: 
+      var(--_g) 0%   50%,
+      var(--_g) 50%  50%,
+      var(--_g) 100% 50%;
+    background-size: calc(100%/3) 100%;
+    animation: l7 1s infinite linear;
+  }
+  @keyframes l7 {
+      33%{background-size:calc(100%/3) 0%  ,calc(100%/3) 100%,calc(100%/3) 100%}
+      50%{background-size:calc(100%/3) 100%,calc(100%/3) 0%  ,calc(100%/3) 100%}
+      66%{background-size:calc(100%/3) 100%,calc(100%/3) 100%,calc(100%/3) 0%  }
+  }
 
 
 
@@ -140,20 +179,18 @@
     &:hover {
         transform: translateY(-4px);
     }
-
 }
-
-
 
 .food-image {
     width: 100%;
     transition: 0.2s ease-in-out;
-    height: 250px;
+    height: 100%;
     object-fit: cover;
 }
 
 .food-info {
-    padding: 16px;
+    height: 100%;
+    /* padding: 16px; */
 }
 
 .food-header {
@@ -195,27 +232,6 @@
     background: #e43b4f;
 }
 
-.add-to-cart {
-    background: #afafafe1;
-    color: var(--text-color);
-    border: 1px solid #c7c7c7ee;
-    padding: 8px 16px;
-    cursor: pointer;
-    font-weight: 600;
-    margin-top: 12px;
-    width: 100%;
-    /* transition: background 0.2s; */
-    transition: 0.2s ease-in-out;
-
-    &:hover {
-        color: white;
-        background: var(--primary-color);
-    }
-}
-
-
-
-
 /* Food information styles */
 .food-title {
     font-size: 18px;
@@ -247,8 +263,8 @@
 .delivery-info {
     display: flex;
     justify-content: space-between;
-    color: #686b78;
-    font-size: 14px;
+    color: #51535b;
+    font-size: 16px;
 }
 
 .price {
@@ -266,6 +282,9 @@
 /* ftbyiuweiufywe fuyweiufy uisygtewiuyfg */
 
 .food-info-container {
+    height: 100%;
+    border-radius: 16px;
+    padding: 15px;
     display: flex;
 }
 
@@ -275,6 +294,7 @@
 }
 
 .left-food-container {
+    height: 100%;
     position: relative;
     padding: 10px 20px 10px 10px;
 }
@@ -283,54 +303,184 @@
     border-radius: 15px;
 }
 
-.cart-add-section {
+.cart-button {
+    background-color: #0d1310;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 0px 18px 0px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 600;
+    position: absolute;
+    bottom: -15px;
+    left: -15px;
+    width: 130px;
+    height: 45px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+	overflow: hidden;
+}
+
+.cart-button:hover {
+    background-color: #303030;
+    transform: scale(1.02);
+}
+
+
+.cart-button .fa-shopping-cart {
+	position: absolute;
+	z-index: 2;
+	top: 50%;
+	left: -10%;
+	font-size: 1.5em;
+	transform: translate(-50%,-50%);
+}
+.cart-button .fa-box {
+	position: absolute;
+	z-index: 3;
+	top: -20%;
+	left: 52%;
+	font-size: 1em;
+	transform: translate(-50%,-50%);
+}
+.cart-button span {
+	position: absolute;
+	z-index: 3;
+	left: 50%;
+	top: 50%;
+    width: 100%;
+	/* font-size: 1rem; */
+	color: #fff;
+	transform: translate(-50%,-50%);
+}
+.cart-button span.add{
+	opacity: 1;
+}
+.cart-button span.added {
+	opacity: 0;
+}
+
+.cart-button.clicked .fa-shopping-cart {
+	animation: cart 1.5s ease-in-out forwards;
+}
+.cart-button.clicked .fa-box {
+	animation: box 1.5s ease-in-out forwards;
+}
+.cart-button.clicked span.add {
+	animation: txt1 1.5s ease-in-out forwards;
+}
+.cart-button.clicked span.added {
+	animation: txt2 1.5s ease-in-out forwards;
+}
+@keyframes cart {
+	0% {
+		left: -10%;
+	}
+	40%, 60% {
+		left: 50%;
+	}
+	100% {
+		left: 110%;
+	}
+}
+@keyframes box {
+	0%, 40% {
+		top: -20%;
+	}
+	60% {
+		top: 40%;
+		left: 52%;
+	}
+	100% {
+		top: 40%;
+		left: 112%;
+	}
+}
+@keyframes txt1 {
+	0% {
+		opacity: 1;
+	}
+	20%, 100% {
+		opacity: 0;
+	}
+}
+@keyframes txt2 {
+	0%, 80% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+
+/* .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: absolute;
+    bottom: -15px;
+    left: -15px;
+
+    padding: 8px 15px;
+    border-radius: 25px;
+    width: 100%;
+    justify-content: start;
+}
+
+.quantity-controls button {
+    background-color: #141414;
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.quantity-controls button:hover {
+    background-color: #303030;
+    transform: scale(1.1);
+}
+
+.quantity {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+    min-width: 30px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+} */
+
+
+.loader-main {
+    width: 100%;
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.decrement,
-.increment {
-    background: var(--light-gray);
-    color: var(--text-color);
-    border: none;
-    border: 1px solid var(--light-gray);
-    padding: 8px 16px;
-    cursor: pointer;
-    font-weight: 600;
-    margin-top: 12px;
-    width: 50px;
-    transition: 0.2s ease-in-out;
-}
-
-.decrement {
-    border-radius: 4px 0px 0px 4px;
-
-    &:hover {
-        color: var(--primary-color);
-        border-color: #afafafe1;
-    }
-
-    &:focus {
-        border-color: #9e9e9ee1;
-        background-color: #868686;
-    }
-}
-
-.increment {
-    border-radius: 0px 4px 4px 0px;
-
-    &:hover {
-        border-color: #afafafe1;
-        color: var(--primary-color);
-    }
-
-    &:focus {
-        border-color: #9e9e9ee1;
-        background-color: #868686;
-    }
-
-
+.loader {
+    width: 40px;
+    aspect-ratio: 4;
+    --_g: no-repeat radial-gradient(circle closest-side, var(--primary-color) 90%, #0000);
+    background:
+        var(--_g) 0% 50%,
+        var(--_g) 50% 50%,
+        var(--_g) 100% 50%;
+    background-size: calc(100%/3) 100%;
+    animation: l7 1s infinite linear;
 }
 
 /* ftbyiuweiufywe fuyweiufy uisygtewiuyfg */

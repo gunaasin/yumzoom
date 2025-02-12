@@ -1,4 +1,3 @@
-
 const nav = document.querySelector('.nav');
 let sideNavVisible = false;
 function BigNav() {
@@ -69,3 +68,14 @@ function renderNavbar() {
 
 renderNavbar();
 window.addEventListener('resize', renderNavbar);
+
+
+
+window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".nav");
+    if (window.scrollY > 200) {
+      navbar.classList.add("scrolled");  
+    } else {
+      navbar.classList.remove("scrolled"); 
+    }
+  });

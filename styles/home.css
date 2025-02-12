@@ -1,13 +1,12 @@
-
 /* Hero Section */
 header {
   background-color: var(--background-color);
   height: 100vh;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-top: 60px;
 }
 
 
@@ -21,22 +20,24 @@ header {
   width: 40vw;
   display: flex;
   text-align: left;
-  padding: 40px;
+  padding: 70px 0px 40px 70px; 
   align-items: start;
   flex-direction: column;
-  /* justify-content: center; */
-  
-}
-.left-hero a{
-  text-decoration: none;
+  justify-content: center;
+
 }
 
-.left-hero button {
+.left-hero a {
+  text-decoration: none;
+  color: white;
+}
+
+
+.left-hero .homt-btn {
   margin: 1.5rem 0;
   padding: 1rem 0.5rem;
   text-decoration: none;
-  background-color: var(--primary-color);
-  color: var(--background-color);
+  background-color: rgb(21, 21, 21);
   border: none;
   border-radius: 14px 14px 0px 14px;
   text-align: center;
@@ -44,14 +45,14 @@ header {
   font-weight: 450;
   transition: 0.3s ease-in-out;
   cursor: pointer;
-
+  
   &:hover {
-    background-color: var(--background-color);
+    background-color: var(--primary-color);
     color: var(--primary-color);
   }
 
   &:hover span {
-    background-color: var(--primary-color);
+    background-color: rgb(16, 16, 16);
     color: var(--background-color);
   }
 }
@@ -69,7 +70,7 @@ header {
 .left-hero h3 {
   font-family: "Modern Antiqua", serif;
   color: var(--success-color);
-  font-size: 2.5rem;
+  font-size: 2.9rem;
   margin-bottom: 1rem;
 }
 
@@ -90,7 +91,7 @@ header {
 }
 
 .right-hero img {
-  width: 80%;
+  width: 90%;
 }
 
 
@@ -99,11 +100,12 @@ header {
 .search-bar-menu {
   padding: 20px 0px;
   width: 100%;
-  border-top: 1px solid rgb(199, 199, 199);
+  /* border-top: 1px solid rgb(199, 199, 199); */
   background-color: white;
   height: 200px;
   display: flex;
   align-items: center;
+  position: relative;
   justify-content: center;
 }
 
@@ -132,7 +134,7 @@ header {
   height: 80%;
   border: none;
   outline: none;
-  font-size:1.2em;
+  font-size: 1.2em;
   background-color: transparent;
   caret-color: rgb(255, 81, 0);
 }
@@ -170,7 +172,7 @@ header {
   transition-duration: .3s;
 
   &:focus path {
-      fill: rgb(255, 81, 0);
+    fill: rgb(255, 81, 0);
 
   }
 }
@@ -192,10 +194,10 @@ header {
   transition: all 0.2s;
 
   &:focus {
-      outline: none;
-      border: 2px solid #ff6b6b;
-      background-color: #fff5f5;
-      color: #422323;
+    outline: none;
+    border: 2px solid #ff6b6b;
+    background-color: #fff5f5;
+    color: #422323;
   }
 }
 
@@ -208,25 +210,43 @@ header {
   background-color: var(--primary-color);
 }
 
-
-
- header .svg {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  height: 100%;
+/* suggestions styles */
+#suggestions {
+  border-radius: 10px 10px;
+  top: 150px;
+  width: 70%;
+  border: 1px solid #ccc;
+  display: none;
   position: absolute;
-  bottom: -150;
-  left: 0;
+  background: white;
+}
+
+.suggestion-item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: #eee;
+}
+
+
+
+header .svg {
+  width: 100vh;
+  height: 100vw;
+  position: relative;
   z-index: 1;
 
 }
 
-header .svg> :first-child {
-  margin-top: 30px;
-  position: relative;
-  bottom: -6.5px;
-} 
+.svg-img{
+  width: 1050px;
+  position: absolute;
+  top: 100px;
+  transform: rotate(280deg); 
+  right:-200px;
+}
 
 
 
@@ -262,50 +282,59 @@ header .svg> :first-child {
   width: 250px;
   height: 120px;
   border-radius: 15px;
-  background-color: var(--background-color);
+  background-color: white;
   display: flex;
   align-items: center;
   position: relative;
   gap: 0.5rem;
   cursor: pointer;
-  box-shadow:
-  8.6px 3.8px 10px rgba(0, 0, 0, 0.078),
-  69px 30px 80px rgba(0, 0, 0, 0.12);
 
-  &:hover{
-    transform:translateY(-5px)
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow:
+  0px 0.1px 1.1px rgba(0, 0, 0, 0.022),
+  0px 0.3px 2.7px rgba(0, 0, 0, 0.032),
+  0px 0.6px 5.1px rgba(0, 0, 0, 0.04),
+  0px 1.1px 9.2px rgba(0, 0, 0, 0.048),
+  0px 2.1px 17.1px rgba(0, 0, 0, 0.058),
+  0px 5px 41px rgba(0, 0, 0, 0.08)
+;
   }
+
   &:hover img {
     transform: scale(1.1);
-    top: -30px; ;
+    top: -30px;
+    ;
   }
 }
 
 
-.menu1{
-  padding: 0px 15px ;
+.menu1 {
+  padding: 0px 15px;
   width: 60%;
 
 }
-.menu1 h3{
+
+.menu1 h3 {
   font-size: 1rem;
   color: var(--secondary-color);
   margin-bottom: 0.5rem;
 }
 
-.menu1 p{
+.menu1 p {
   color: var(--gray-color);
   font-size: 0.9rem;
   margin-bottom: 0.2rem;
 }
-.menu1 .price{
+
+.menu1 .price {
   color: var(--primary-color);
   font-size: 0.9rem;
   font-weight: 500;
   margin-bottom: 0.2rem;
 }
 
-.menu2 img{
+.menu2 img {
   transition: 0.3s ease;
   position: absolute;
   top: -20px;
@@ -330,19 +359,44 @@ header .svg> :first-child {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
+.loader-main{
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.loader {
+  width: 40px;
+  aspect-ratio: 4;
+  --_g: no-repeat radial-gradient(circle closest-side,var(--primary-color) 90%,#0000);
+  background: 
+    var(--_g) 0%   50%,
+    var(--_g) 50%  50%,
+    var(--_g) 100% 50%;
+  background-size: calc(100%/3) 100%;
+  animation: l7 1s infinite linear;
+}
+@keyframes l7 {
+    33%{background-size:calc(100%/3) 0%  ,calc(100%/3) 100%,calc(100%/3) 100%}
+    50%{background-size:calc(100%/3) 100%,calc(100%/3) 0%  ,calc(100%/3) 100%}
+    66%{background-size:calc(100%/3) 100%,calc(100%/3) 100%,calc(100%/3) 0%  }
+}
 .restaurant-card {
+  max-width: 480px;
   text-decoration: none;
   background-color: var(--background-color);
   border-radius: 15px 15px 15px 15px;
   overflow: hidden;
   box-shadow:
-  8.6px 3.8px 10px rgba(0, 0, 0, 0.078),
-  69px 30px 80px rgba(0, 0, 0, 0.12);
+    8.6px 3.8px 10px rgba(0, 0, 0, 0.078),
+    69px 30px 80px rgba(0, 0, 0, 0.12);
   transition: transform 0.3s ease;
   cursor: pointer;
+
   &:hover img {
-    transform: scale(1.1); 
+    transform: scale(1.1);
   }
 }
 
@@ -396,26 +450,27 @@ footer {
 
 /* autoshow aniamtion */
 
-.autoshow{
+.autoshow {
   animation: autoshowAnimation both;
   animation-timeline: view(70% 3%);
 }
 
 @keyframes autoshowAnimation {
- from{
+  from {
     opacity: 0;
     transform: translateY(200px) scale(0.5);
- }to{
+  }
+
+  to {
     opacity: 1;
     transform: translateY(0px) scale(1);
- }
+  }
 }
 
 
 /* xl */
 @media (max-width:1280px) {
-  * Hero Section */
-  header {
+  * Hero Section */ header {
     background-color: var(--background-color);
     height: 100vh;
     display: flex;
@@ -424,13 +479,13 @@ footer {
     text-align: center;
     margin-top: 60px;
   }
-  
-  
+
+
   .hero {
     display: flex;
     color: var(--background-color);
   }
-  
+
   .left-hero {
     z-index: 22;
     width: 40vw;
@@ -441,7 +496,7 @@ footer {
     flex-direction: column;
     /* justify-content: center; */
   }
-  
+
   .left-hero button {
     margin: 1.5rem 0;
     padding: 1rem 0.5rem;
@@ -454,18 +509,18 @@ footer {
     font-weight: 450;
     transition: 0.3s ease-in-out;
     cursor: pointer;
-  
+
     &:hover {
       background-color: var(--background-color);
       color: var(--primary-color);
     }
-  
+
     &:hover span {
       background-color: var(--primary-color);
       color: var(--background-color);
     }
   }
-  
+
   .left-hero button span {
     background-color: var(--background-color);
     color: var(--primary-color);
@@ -475,33 +530,33 @@ footer {
     padding: 2px 6px;
     margin: 0px 3px;
   }
-  
+
   .left-hero h3 {
     font-family: "Modern Antiqua", serif;
     color: var(--success-color);
     font-size: 2.5rem;
     margin-bottom: 1rem;
   }
-  
+
   .left-hero h1 {
     font-size: 4rem;
     color: var(--secondary-color);
     margin-bottom: 1rem;
   }
-  
+
   .left-hero p {
     color: rgb(54, 53, 53);
     font-size: 16px;
   }
-  
+
   .right-hero {
     z-index: 22;
     width: 55vw;
   }
-  
+
   .right-hero img {
     width: 80%;
-  
+
     /* box-shadow:
         2.6px 2.8px 2.2px rgba(0, 0, 0, 0.02),
         6.2px 6.7px 5.3px rgba(0, 0, 0, 0.028),
@@ -511,29 +566,32 @@ footer {
         93px 100px 80px rgba(0, 0, 0, 0.07)
       ; */
   }
-  
-  
 
-  
-   header .svg {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    position: absolute;
-    bottom: -150;
-    left: 0;
+
+
+
+
+  header .svg {
+    width: 100vh;
+    height: 100vw;
+    position: relative;
     z-index: 1;
-  
+
   }
-  
-  header .svg> :first-child {
+
+  /* header .svg> :first-child {
     margin-top: 30px;
     position: relative;
     bottom: -6.5px;
-  } 
-  
+  } */
+
+  .svg-img{
+    position: absolute;
+    right:550px
+  }
+
 }
+
 /* lg */
 @media (max-width:1024px) {
 
@@ -547,14 +605,14 @@ footer {
     text-align: center;
     margin-top: 60px;
   }
-  
-  
+
+
   .hero {
     display: flex;
     flex-direction: column-reverse;
     color: var(--background-color);
   }
-  
+
   .left-hero {
     z-index: 22;
     width: 99%;
@@ -567,7 +625,7 @@ footer {
     flex-direction: column;
     /* justify-content: center; */
   }
-  
+
   .left-hero button {
     margin: 1.5rem 0;
     padding: 1rem 0.5rem;
@@ -580,18 +638,18 @@ footer {
     font-weight: 450;
     transition: 0.3s ease-in-out;
     cursor: pointer;
-  
+
     &:hover {
       background-color: var(--background-color);
       color: var(--primary-color);
     }
-  
+
     &:hover span {
       background-color: var(--primary-color);
       color: var(--background-color);
     }
   }
-  
+
   .left-hero button span {
     background-color: var(--background-color);
     color: var(--primary-color);
@@ -601,40 +659,40 @@ footer {
     padding: 2px 6px;
     margin: 0px 3px;
   }
-  
+
   .left-hero h3 {
     font-family: "Modern Antiqua", serif;
     color: var(--success-color);
     font-size: 2.5rem;
     margin-bottom: 1rem;
   }
-  
+
   .left-hero h1 {
     font-size: 4rem;
     color: var(--secondary-color);
     margin-bottom: 1rem;
   }
-  
+
   .left-hero p {
     color: rgb(54, 53, 53);
     font-size: 16px;
   }
-  
+
   .right-hero {
     z-index: 22;
     width: 99%;
   }
-  
+
   .right-hero img {
     width: 60%;
     position: relative;
     top: 0px;
     left: 150px;
   }
-  
-  
-  
-   header .svg {
+
+
+
+  header .svg {
     width: 100%;
     overflow-x: hidden;
     margin: 0;
@@ -645,18 +703,19 @@ footer {
     top: -100px;
     left: 0;
     z-index: 1;
-  
+
   }
-  .svg svg{
+
+  .svg svg {
     height: 400px;
   }
-  
+
   header .svg> :first-child {
     margin-top: 0px;
     position: relative;
     bottom: -6.7px;
-  } 
-  
+  }
+
 }
 
 /* md */
@@ -671,14 +730,14 @@ footer {
     text-align: center;
     margin-top: 60px;
   }
-  
-  
+
+
   .hero {
     display: flex;
     flex-direction: column-reverse;
     color: var(--background-color);
   }
-  
+
   .left-hero {
     z-index: 22;
     width: 99%;
@@ -691,7 +750,7 @@ footer {
     flex-direction: column;
     /* justify-content: center; */
   }
-  
+
   .left-hero button {
     margin: 1.5rem 0;
     padding: 1rem 0.5rem;
@@ -704,18 +763,18 @@ footer {
     font-weight: 450;
     transition: 0.3s ease-in-out;
     cursor: pointer;
-  
+
     &:hover {
       background-color: var(--background-color);
       color: var(--primary-color);
     }
-  
+
     &:hover span {
       background-color: var(--primary-color);
       color: var(--background-color);
     }
   }
-  
+
   .left-hero button span {
     background-color: var(--background-color);
     color: var(--primary-color);
@@ -725,40 +784,40 @@ footer {
     padding: 2px 6px;
     margin: 0px 3px;
   }
-  
+
   .left-hero h3 {
     font-family: "Modern Antiqua", serif;
     color: var(--success-color);
     font-size: 2.5rem;
     margin-bottom: 1rem;
   }
-  
+
   .left-hero h1 {
     font-size: 4rem;
     color: var(--secondary-color);
     margin-bottom: 1rem;
   }
-  
+
   .left-hero p {
     color: rgb(54, 53, 53);
     font-size: 16px;
   }
-  
+
   .right-hero {
     z-index: 22;
     width: 99%;
   }
-  
+
   .right-hero img {
     width: 70%;
     position: relative;
     top: 50px;
     left: 100px;
   }
-  
-  
-  
-   header .svg {
+
+
+
+  header .svg {
     width: 100%;
     overflow-x: hidden;
     margin: 0;
@@ -769,17 +828,18 @@ footer {
     top: -100px;
     left: 0;
     z-index: 1;
-  
+
   }
-  .svg svg{
+
+  .svg svg {
     height: 400px;
   }
-  
+
   header .svg> :first-child {
     margin-top: 0px;
     position: relative;
     bottom: -6.7px;
-  } 
+  }
 
   .category-list {
     flex-wrap: wrap;
@@ -789,16 +849,19 @@ footer {
 
   .category-item {
     flex: 0 0 calc(100% - 1rem);
-    &:hover{
-      transform:translateY(-5px)
+
+    &:hover {
+      transform: translateY(-5px)
     }
+
     &:hover img {
       transform: scale(1.1);
-      top: 0px; ;
+      top: 0px;
+      ;
     }
   }
 
-  .menu2 img{
+  .menu2 img {
     transition: 0.3s ease;
     position: absolute;
     top: 0px;
@@ -806,6 +869,7 @@ footer {
     width: 150px;
   }
 }
+
 /* sm */
 @media (max-width:640px) {
   header {
@@ -818,14 +882,14 @@ footer {
     text-align: center;
     margin-top: 60px;
   }
-  
-  
+
+
   .hero {
     display: flex;
     flex-direction: column-reverse;
     color: var(--background-color);
   }
-  
+
   .left-hero {
     z-index: 22;
     width: 99%;
@@ -838,7 +902,7 @@ footer {
     flex-direction: column;
     /* justify-content: center; */
   }
-  
+
   .left-hero button {
     margin: 1.5rem 0;
     padding: 1rem 0.5rem;
@@ -851,18 +915,18 @@ footer {
     font-weight: 450;
     transition: 0.3s ease-in-out;
     cursor: pointer;
-  
+
     &:hover {
       background-color: var(--background-color);
       color: var(--primary-color);
     }
-  
+
     &:hover span {
       background-color: var(--primary-color);
       color: var(--background-color);
     }
   }
-  
+
   .left-hero button span {
     background-color: var(--background-color);
     color: var(--primary-color);
@@ -872,40 +936,40 @@ footer {
     padding: 2px 6px;
     margin: 0px 3px;
   }
-  
+
   .left-hero h3 {
     font-family: "Modern Antiqua", serif;
     color: var(--success-color);
     font-size: 2rem;
     margin-bottom: 1rem;
   }
-  
+
   .left-hero h1 {
     font-size: 3rem;
     color: var(--secondary-color);
     margin-bottom: 1rem;
   }
-  
+
   .left-hero p {
     color: rgb(54, 53, 53);
     font-size: 16px;
   }
-  
+
   .right-hero {
     z-index: 22;
     width: 99%;
   }
-  
+
   .right-hero img {
     width: 80%;
     position: relative;
     top: -20px;
     left: 60px;
   }
-  
-  
-  
-   header .svg {
+
+
+
+  header .svg {
     width: 100%;
     overflow-x: hidden;
     margin: 0;
@@ -916,39 +980,41 @@ footer {
     top: 0px;
     left: 0;
     z-index: 1;
-  
+
   }
-  .svg svg{
+
+  .svg svg {
     height: 300px;
   }
-  
+
   header .svg> :first-child {
     margin-top: 0px;
     position: relative;
     bottom: -6.7px;
-  } 
+  }
 }
+
 /* xsm*/
 @media (max-width: 475px) {
   header {
     overflow-x: hidden;
     background-color: var(--background-color);
     height: 100vh;
-    width: 100vw; 
+    width: 100vw;
     display: flex;
     align-items: space-around;
     justify-content: center;
     text-align: center;
     margin-top: 60px;
   }
-  
-  
+
+
   .hero {
     display: flex;
     flex-direction: column-reverse;
     color: var(--background-color);
   }
-  
+
   .left-hero {
     z-index: 22;
     width: 100%;
@@ -961,7 +1027,7 @@ footer {
     flex-direction: column;
     /* justify-content: center; */
   }
-  
+
   .left-hero button {
     margin: 1.5rem 0;
     padding: 1rem 0.5rem;
@@ -974,18 +1040,18 @@ footer {
     font-weight: 450;
     transition: 0.3s ease-in-out;
     cursor: pointer;
-  
+
     &:hover {
       background-color: var(--background-color);
       color: var(--primary-color);
     }
-  
+
     &:hover span {
       background-color: var(--primary-color);
       color: var(--background-color);
     }
   }
-  
+
   .left-hero button span {
     background-color: var(--background-color);
     color: var(--primary-color);
@@ -995,30 +1061,30 @@ footer {
     padding: 2px 6px;
     margin: 0px 3px;
   }
-  
+
   .left-hero h3 {
     font-family: "Modern Antiqua", serif;
     color: var(--success-color);
     font-size: 2rem;
     margin-bottom: 1rem;
   }
-  
+
   .left-hero h1 {
     font-size: 3rem;
     color: var(--secondary-color);
     margin-bottom: 1rem;
   }
-  
+
   .left-hero p {
     color: rgb(54, 53, 53);
     font-size: 16px;
   }
-  
+
   .right-hero {
     z-index: 22;
     width: 100%;
   }
-  
+
   .right-hero img {
     width: 90%;
     position: relative;
@@ -1026,10 +1092,10 @@ footer {
     left: 50px;
     padding: 20px;
   }
-  
-  
-  
-   header .svg {
+
+
+
+  header .svg {
     width: 100%;
     overflow-x: hidden;
     margin: 0;
@@ -1040,17 +1106,18 @@ footer {
     top: 100px;
     left: 0;
     z-index: 1;
-  
+
   }
-  .svg svg{
+
+  .svg svg {
     height: 200px;
   }
-  
+
   header .svg> :first-child {
     margin-top: 0px;
     position: relative;
     bottom: -6.7px;
-  }   
+  }
 
   .category-item {
     width: 90;
@@ -1063,8 +1130,8 @@ footer {
     gap: 0rem;
     cursor: pointer;
     box-shadow:
-    8.6px 3.8px 10px rgba(0, 0, 0, 0.078),
-    69px 30px 80px rgba(0, 0, 0, 0.12);
-  
+      8.6px 3.8px 10px rgba(0, 0, 0, 0.078),
+      69px 30px 80px rgba(0, 0, 0, 0.12);
+
   }
 }

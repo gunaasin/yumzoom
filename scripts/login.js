@@ -186,8 +186,8 @@ function loadSignUpForm() {
             role
         };
         async function postSignUp(signupData) {
-            signUPBTN.innerHTML = `<div class="loader"/>`;
-            signUPBTN.innerText = "" ;
+            signinBTN.innerText = "";
+            signinBTN.innerHTML = `<div class="loader"/>`;
             try {
                 const response = await fetch(`${API}/signup`, {
                     method: "POST",
