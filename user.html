@@ -16,9 +16,29 @@
 </head>
 <body>
     <nav class="nav"></nav>
-    <div class="dashboard-container">   
+    <div class="dashboard-container">  
+        <aside class="sidebar">
+            <div class="user-info animationFirst">
+                <img src="./assets/profile.svg" alt="User Photo">
+                <p class="user-email">Guna@gmail.com</p>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="Overview animationFirst" ><i class="fas fa-home"></i> Cart & Overview</li>
+                <li class="Order animationSecond"><i class="fas fa-history"></i> Order History</li>
+                <li class="animationThree"><i class="fas fa-heart"></i> Favorites</li>
+                <li class="Addresses animationFour"><i class="fas fa-address-book"></i> Addresses</li>
+                <!-- <li class="animationFive"><i class="fas fa-credit-card"></i> Payment Methods</li> -->
+                <li class="Settings animationSix"><i class="fas fa-cog"></i> Settings</li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            
+        </main>
     </div>
     <footer class="footer"></footer>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@latest/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@latest/bundles/stomp.umd.min.js"></script>
+    
     <script type="module" src="./scripts/user.js"></script>
 </body>
 </html>

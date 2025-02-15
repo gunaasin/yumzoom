@@ -187,9 +187,6 @@ export function renderMenuPage() {
             imagePath: formData.get('imagePath'),
             restaurantId: extractRestaurantId()
         };
-        console.log(token)
-        console.log(foodItem);
-
         async function postUpdateProduct(foodItem) {
             submission.innerText="";
             submission.innerHTML=`<div class="loader"/>`

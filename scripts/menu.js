@@ -3,6 +3,7 @@ import "./footer.js";
 import "./animation.js";
 import { parseJwt } from "./parseValue.js";
 import API from "./end-point.js";
+import { showNotification } from "./notification.js";
 
 const foodGrid = document.querySelector(".food-grid");
 const urlParams = new URLSearchParams(window.location.search);
@@ -49,17 +50,40 @@ function remderMenus(item) {
     foodGrid.insertAdjacentHTML("beforeend", menuHtml);
     const newButton = foodGrid.querySelector(`.cart-button[data-id="${item.id}"]`);
     newButton.addEventListener('click', (event) => {
-        event.currentTarget.classList.add('clicked'); 
+        event.currentTarget.classList.add('clicked');
         const itemId = event.currentTarget.getAttribute("data-id");
+        console.log(itemId)
         addToCartFunction(itemId);
-        
+
     });
 }
 
 
-function addToCartFunction(id){
+async function addToCartFunction(id) {
 
-
+    const addToCartProduct = {
+        productId: id,
+        token,
+        quantity: 1
+    }
+    try {
+        const response = await fetch(`${API}/customer/addtocart`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(addToCartProduct)
+        })
+        if (!response.ok) {
+            showNotification("Sumthing when wrong");
+            return;
+        }
+        const result = await response.json();
+        showNotification(result.message);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 

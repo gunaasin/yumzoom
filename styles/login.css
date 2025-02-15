@@ -11,7 +11,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #ffd9d9c5 0%, #ffffffa8 100%);
+  background: linear-gradient(135deg, #424242c5 0%, #444444a8 100%);
 }
 
 
@@ -159,7 +159,7 @@
   justify-content: center;
   width: 100%;
   padding: 0.875rem;
-  background-color: #ff6b6b;
+  background-color:#ff6767;
   color: white;
   border: none;
   border-radius: 0.5rem;

@@ -1,4 +1,4 @@
-/* Hero Section */
+
 header {
   background-color: var(--background-color);
   height: 100vh;
@@ -437,8 +437,8 @@ header .svg {
 }
 
 /* Footer */
-footer {
-  background-color: var(--secondary-color);
+.footer {
+  background-color: white;
   color: var(--background-color);
   text-align: center;
   padding: 1rem;

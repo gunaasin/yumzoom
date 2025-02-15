@@ -102,7 +102,7 @@ function loadSignInForm() {
         }
 
         async function postSignIn(signupdata) {
-            signinBTN.innerText = "";
+            signinBTN.innerHTML = "";
             signinBTN.innerHTML = `<div class="loader"/>`;
             try{
                 const response = await fetch(`${API}/signin`,{
@@ -121,7 +121,7 @@ function loadSignInForm() {
                     showNotification(data.message);
                     return;
                 }else{
-                    signinBTN.innerText = "Sign in";
+                    signinBTN.innerHTML = "Sign in";
                     signinBTN.innerHTML = "";
                     localStorage.setItem("key", JSON.stringify(data));
                     const {role} = parseJwt();
@@ -186,8 +186,8 @@ function loadSignUpForm() {
             role
         };
         async function postSignUp(signupData) {
-            signinBTN.innerText = "";
-            signinBTN.innerHTML = `<div class="loader"/>`;
+            signUPBTN.innerText = "";
+            signUPBTN.innerHTML = `<div class="loader"/>`;
             try {
                 const response = await fetch(`${API}/signup`, {
                     method: "POST",

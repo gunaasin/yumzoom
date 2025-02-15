@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>YumZoom</title>
+    <link href="https://fonts.googleapis.com/css2?family=Modern+Antiqua&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+    <style>
+        * {
+            border: 0;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", serif;
+        }
+
+        /* Light Theme */
+        :root {
+            --success1: hsl(126, 90%, 40%);
+            --success2: hsl(126, 90%, 24%);
+            --trans-dur: 0.3s;
+            font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+        }
+
+        body {
+            background-color: white;
+            font-family: "Poppins", serif;
+            display: flex;
+            height: 100vh;
+            transition: background-color var(--trans-dur), color var(--trans-dur);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .spinner {
+            color: var(--success2);
+            overflow: visible;
+            width: 6em;
+            height: auto;
+            transition: color var(--trans-dur);
+        }
+
+        /* Animations */
+        @keyframes check {
+
+            from,
+            64% {
+                stroke-dashoffset: -36.7;
+                transform: scale(1);
+            }
+
+            75%,
+            77% {
+                stroke-dashoffset: 13.7;
+                transform: scale(1);
+            }
+
+            79% {
+                stroke-dashoffset: 13.7;
+                transform: scale(0.4);
+            }
+
+            87% {
+                stroke-dashoffset: 13.7;
+                transform: scale(1.4);
+            }
+
+            93%,
+            to {
+                stroke-dashoffset: 13.7;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes worm {
+            from {
+                stroke-dashoffset: -51.84;
+                transform: rotate(-119deg);
+            }
+
+            60% {
+                stroke-dashoffset: -51.84;
+                transform: rotate(calc(-119deg + 1080deg));
+            }
+
+            64% {
+                stroke-dashoffset: -51.84;
+                transform: rotate(calc(-119deg + 1152deg));
+            }
+
+            72.5%,
+            to {
+                stroke-dashoffset: -138.23;
+                transform: rotate(calc(-119deg + 1152deg));
+            }
+        }
+
+        .spinner__worm {
+            animation: worm 2s linear forwards;
+            transform-origin: 24px 24px;
+        }
+
+        .spinner__check {
+            animation: check 2s linear forwards;
+            transform-origin: 24px 24px;
+        }
+
+        /* Dark Theme */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: hsl(223, 10%, 10%);
+                --fg: hsl(223, 10%, 90%);
+            }
+
+            .spinner {
+                color: var(--success1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <svg class="spinner" viewBox="0 0 48 48" role="img"
+        aria-label="A partial ring that rotates and then is shaped as a checkmark, which pops out yielding confetti">
+        <g fill="none" stroke="currentcolor" stroke-linecap="round" stroke-width="4">
+            <circle class="spinner__worm" cx="24" cy="24" r="22" stroke-dasharray="138.23 138.23"
+                stroke-dashoffset="-51.84" transform="rotate(-119)" />
+            <path class="spinner__check" d="M 17 25 L 22 30 C 22 30 32.2 19.8 37.3 14.7 C 41.8 10.2 39 7.9 39 7.9"
+                stroke-dasharray="36.7 36.7" stroke-dashoffset="-36.7" />
+        </g>
+    </svg>
+    <p id="text"></p>
+
+    <script>
+        setTimeout(() => {
+           document.getElementById("text").innerText = "Order placed successfully"
+        }, 1500);
+
+        setTimeout(() => {
+            window.location.href="/user.html";
+        }, 2500);
+    </script>
+</body>
+
+</html>

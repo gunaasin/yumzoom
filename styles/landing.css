@@ -53,6 +53,7 @@ body {
     width:100%;
     line-height: 1.5rem;
     color: rgb(64, 64, 64);
+    margin-bottom: 50px;
 }
 .main-item{
     margin-bottom: 50px;
@@ -68,10 +69,11 @@ body {
 }
 
 .terms{
-    border: 1px solid var(--primary-color-lighter);
+    border: 1px solid rgb(204, 204, 204);
     border-radius: 4px;
     padding: 15px 40px;
-    background-color: var(--primary-color-light);
+    background-color: rgb(240, 240, 240);
+    
 }
 
 /* loder*/
