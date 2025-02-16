@@ -13,14 +13,15 @@ export function loadRestaurants(info) {
     const restaurantHtml = `
         <a  href="menu.html?res=${info.restaurantId}" class="restaurant-card autoshow">
           <img
-           src="${info.image}"
+           src="${info.image===null? "./assets/restaurant2.jpg" : info.image}"
             alt="Restaurant-img">
           <div class="restaurant-info">
-            <h3>${info.name}</h3>
+            <h3>${info.name===null ? "Yum Zoom Restaurant" : info.name}</h3>
+            
             <div class="rating">
                 <i class="fas fa-star"></i><span>${info.rating}</span>
             </div>
-            <p>${info.cusineType}</p>
+            <p>${info.cusineType  ? info.cusineType : "Any"}</p>
             <p>30-45 min • Free delivery</p>
           </div>
         </a>

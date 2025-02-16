@@ -24,7 +24,6 @@ body{
 
 .restaurant-image{
     object-fit: fill;
-   
 }
 
 .price-order{
@@ -51,13 +50,15 @@ body{
 .order-status {
     padding: 0.25rem 0.75rem;
     border-radius: 12px;
+    font-weight: 500;
     font-size: 0.8rem;
+    color: rgb(21, 175, 55);
 }
 
-.order-status.delivered {
+/* .order-status.delivered {
     background-color: var(--success-color);
     color: white;
-}
+} */
 
 .restaurant-info {
     display: flex;
@@ -167,7 +168,7 @@ body{
 }
 
 .sidebar-menu li.active {
-    background-color:rgb(21, 19, 19);
+    background-color:#3e3b3b;;
     color: white;
     
     &:hover{

@@ -8,7 +8,7 @@ function BigNav() {
     <div class="logo animationFirst">
         <img src="./assets/logo.png" alt="logo" class="yumzoom"> 
         <i class="fa-solid fa-xmark"></i>
-        <h3 id="restaurant-name">Name of restaurant</h3>
+        <h3 id="restaurant-name">YumZoom Restaurant</h3>
     </div>
 
      <div class="nav-icons animationFive">
@@ -30,7 +30,7 @@ function BigNav() {
 
 export function loadRestaurantName(name){
    try{
-    document.getElementById('restaurant-name').innerHTML = name;
+    document.getElementById('restaurant-name').innerHTML = name ? name : "YumZoom Restaurant";
    }catch(error){
     console.warn('Not for mobile');
    }

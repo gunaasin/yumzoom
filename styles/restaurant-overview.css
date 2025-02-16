@@ -23,12 +23,16 @@
     margin-bottom: 1.5rem;
 }
 
+.section-header h2{
+    font-size: 18px;
+}
+
 .restaurant-info-section h3{
-    font-size: 16px;
+    font-size: 14px;
     color: rgb(52, 52, 52);
 }
 .restaurant-info-section span{
-    font-size: 16px;
+    font-size: 14px;
     color: rgb(82, 82, 82);
 }
 
@@ -60,10 +64,11 @@
 }
 
 .order-card {
-    background: var(--bg-primary);
-    padding: 1rem;
-    border-radius: 0.75rem;
+    background: rgb(255, 255, 255);
+    /* padding: 1rem; */
+    border-radius:4px;
     display: grid;
+    position: relative;
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 1rem;
@@ -105,19 +110,34 @@
     gap: 0.5rem;
 }
 
+.order-info span{
+    color: rgb(100, 100, 100);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.order-info p{
+    font-size: 14px;
+    font-weight: 500;
+}
+
 .order-actions {
+    bottom:0px;
+    right: 0px;
+    position: absolute;
     display: flex;
     gap: 0.5rem;
 }
 
+
 .action-btn {
-    padding: 0.5rem 1rem;
+    padding: 0.7rem 1rem;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 10px 0px 10px 0px ;
     font-weight: 500;
     cursor: pointer;
     transition: var(--transition);
-    min-width: 120px;
+    width:150px;
     color: white;
 }
 
@@ -127,15 +147,19 @@
 }
 
 .btn-accept {
-    background: var(--primary-color);
+    /* background: var(--primary-color); */
+    /* background: var(--primary-color); */
+    background: #3e3b3b;
 }
 
 .btn-ready {
-    background: var(--success-color);
+    /* background: var(--success-color); */
+    background: #3e3b3b;
 }
 
 .btn-complete {
-    background: var(--warning-color);
+    /* background: var(--warning-color); */
+    background: #3e3b3b;
 }
 
 /* Side Sections */
@@ -153,6 +177,10 @@
     padding: 1.5rem;
     box-shadow: var(--shadow-sm);
 }
+.popular-items-section h2,
+.revenue-section h2{
+    font-size: 14px;
+}
 
 .popular-items-list {
     display: grid;
@@ -160,6 +188,7 @@
 }
 
 .popular-item {
+    font-size: 14px;
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -70,7 +70,7 @@ document.getElementById("ourmenu").addEventListener('click', () => {
 export function loadRestaurantIdAndInfo(data) {
     try {
         console.log(data);
-        document.querySelector(".image").innerHTML = data.image === null ? "" : ` <img  class="restaurant-image" src="${data.image}" alt="">`;
+        document.querySelector(".restaurant-image-container").innerHTML = data.image === null ? `<img  class="restaurant-images" src="./assets/restaurant2.jpg" alt="">` : ` <img  class="restaurant-images" src="${data.image}" alt="">`;
         document.querySelector(".restaurant-id").innerHTML = data.restaurantId;
         document.querySelector(".status").innerHTML = data.isActive ? "Available" : "Closed";
         document.querySelector(".ratings").innerHTML = data.rating;

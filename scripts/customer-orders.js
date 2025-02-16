@@ -7,20 +7,22 @@ export function customerOrderSection() {
     const ordersSectionHtml = ` 
             <section class="recent-orders animationSecond">
                 <div class="section-header">
-                    <h2>Recent Orders</h2>
-                    <a href="#" class="view-all">View All</a>
+                    <h2>Orders</h2>
+                   <!-- <a href="#" class="view-all">View All</a> -->
                 </div>
                 <div class="order-list-container"></div>
                 </section>`
 
     document.querySelector(".main-content").innerHTML = ordersSectionHtml;
     async function renderOrderList(order) {
+        console.log(order)
+        renderLiveMessage(order.orderId);
         const orderListHtml = `
             <div class="order-list">
                 <div class="order-card">
                     <div class="order-header">
                         <span class="order-id">${order.orderId}</span>
-                        <span class="order-status delivered">Delivered</span>
+                        <span class="order-status delivered">${order.status}</span>
                     </div>
                     <div class="restaurant-info">
                         ${order.orderItemDTOList.map(item => `
@@ -66,7 +68,7 @@ export function customerOrderSection() {
             }
 
             const orders = await response.json();
-            orders.forEach(order => renderOrderList(order));
+            orders.reverse().forEach(order => renderOrderList(order));
         } catch (error) {
             console.error("Error fetching order list:", error);
         }
@@ -77,10 +79,9 @@ export function customerOrderSection() {
 
 
 
-    function renderLiveMessage() {
+    function renderLiveMessage(id) {
         const { token } = parseJwt();
-        console.log(token);
-    
+
         const socket = new SockJS("http://localhost:8080/ws");
         const stompClient = new StompJs.Client({
             webSocketFactory: () => socket,
@@ -94,22 +95,43 @@ export function customerOrderSection() {
         });
     
         stompClient.onConnect = function (frame) {
-            console.log("✅ Connected to WebSocket!");
+            console.log(" Connected to WebSocket!");
     
             // Subscribe to order updates
-            stompClient.subscribe("/topic/order/ORDER_02151446_256", function (message) {
-                console.log("📩 Order Update:", message.body);
+            stompClient.subscribe(`/topic/order/${id}`, function (message) {
+                console.log(" Order Update:", message.body);
             });
         };
     
         stompClient.onStompError = function (frame) {
-            console.error("❌ STOMP Error:", frame.headers['message']);
+            console.error(" STOMP Error:", frame.headers['message']);
         };
     
         stompClient.activate(); // ✅ Correct way to connect
     }
     
-    renderLiveMessage();
+
+
+    async function name() {
+        const { token } = parseJwt();
+        try {
+            const response = await fetch(`${API}/test-websocket/ORDER_02161724_394`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            });
+            const res = await response;
+            console.log(res)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    // setInterval(() => {
+        name();   
+    //     console.log("name called")
+    // },5000)
+    
 
 }
 

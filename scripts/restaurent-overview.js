@@ -1,8 +1,9 @@
 import { showNotification } from "./notification.js";
 import { parseJwt } from "./parseValue.js";
 import API from "./end-point.js";
-import {loadRestaurantName} from "./restaurant-nav.js";
-import {loadRestaurantIdAndInfo} from "./restaurant.js";
+import { loadRestaurantName } from "./restaurant-nav.js";
+import { loadRestaurantIdAndInfo, extractRestaurantId } from "./restaurant.js";
+
 
 
 export function renderOverview() {
@@ -11,7 +12,8 @@ export function renderOverview() {
     link.href = "../styles/restaurant-overview.css";
     document.head.appendChild(link);
 
-    const overviewHtml = `<div class="dashboard">
+    const overviewHtml = `
+    <div class="dashboard">
         
                 <main class="main-content">
                     <div class="content-grid">
@@ -44,10 +46,10 @@ export function renderOverview() {
                                 <div class="chart-container">
                                     <div class="chart-grid">
                                         <div class="chart-y-axis">
-                                            <span>$3k</span>
-                                            <span>$2k</span>
-                                            <span>$1k</span>
-                                            <span>$0</span>
+                                            <span>3k</span>
+                                            <span>2k</span>
+                                            <span>1k</span>
+                                            <span>0</span>
                                         </div>
                                         <div id="revenue-chart" class="chart">
                                             <!-- Chart bars will be inserted here -->
@@ -73,11 +75,6 @@ export function renderOverview() {
     mainContent.innerHTML = " ";
     mainContent.innerHTML = overviewHtml;
 
-    let mockOrders = [
-        { id: 1, table: 5, items: ['Margherita Pizza', 'Caesar Salad'], status: 'new', time: '2 min ago', total: 32.50 },
-        { id: 2, table: 3, items: ['Pasta Carbonara', 'Tiramisu'], status: 'new', time: '5 min ago', total: 28.75 },
-        { id: 3, table: 8, items: ['Grilled Salmon', 'House Wine'], status: 'preparing', time: '8 min ago', total: 45.00 }
-    ];
 
     const popularItems = [
         { name: 'Margherita Pizza', orders: 145 },
@@ -87,80 +84,24 @@ export function renderOverview() {
         { name: 'Grilled Salmon', orders: 65 }
     ];
 
-    const weeklyRevenue = [2150, 1850, 2300, 1950, 2450, 2600, 2150];
+    const weeklyRevenue = [0, 0, 0, 0, 0, 0, 0];
     const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
+
     function getActionButtons(order) {
-        switch (order.status) {
+        switch (order.status.toLowerCase()) {
             case 'new':
-                return `
-                    <button class="action-btn btn-accept" onclick="updateOrderStatus(${order.id}, 'preparing')">
-                        Accept Order
-                    </button>
-                `;
+                return `<button class="action-btn btn-accept" data-order-id="${order.orderId}">Accept Order</button>`;
             case 'preparing':
-                return `
-                    <button class="action-btn btn-ready" onclick="updateOrderStatus(${order.id}, 'ready')">
-                        Mark as Ready
-                    </button>
-                `;
+                return `<button class="action-btn btn-ready" data-order-id="${order.orderId}">Mark as Ready</button>`;
             case 'ready':
-                return `
-                    <button class="action-btn btn-complete" onclick="completeOrder(${order.id})">
-                        Complete Order
-                    </button>
-                `;
+                return `<button class="action-btn btn-complete" data-order-id="${order.orderId}">Complete Order</button>`;
             default:
                 return '';
         }
     }
 
-    // Function to format currency
-    function formatCurrency(amount) {
-        return new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD'
-        }).format(amount);
-    }
-
-    // Function to update order status
-    function updateOrderStatus(orderId, newStatus) {
-        const order = mockOrders.find(o => o.id === orderId);
-        if (order) {
-            order.status = newStatus;
-            showNotification(`Order #${orderId} is now ${newStatus}`);
-            renderOrders();
-        }
-    }
-
-    // Function to complete and remove order
-    function completeOrder(orderId) {
-        mockOrders = mockOrders.filter(o => o.id !== orderId);
-        showNotification(`Order #${orderId} completed`);
-        renderOrders();
-    }
-
-    // Function to render orders
-    function renderOrders() {
-        const ordersContainer = document.getElementById('orders-list');
-        ordersContainer.innerHTML = mockOrders.map(order => `
-            <div class="order-card">
-                <span class="order-status status-${order.status}">${order.status}</span>
-                <div class="order-info">
-                    <strong>Table ${order.table}</strong>
-                    <p>${order.items.join(', ')}</p>
-                    <div class="order-meta">
-                        <small>${order.time}</small>
-                        <strong>${formatCurrency(order.total)}</strong>
-                    </div>
-                </div>
-                <div class="order-actions">
-                    ${getActionButtons(order)}
-                </div>
-            </div>
-        `).join('');
-    }
-
+    let restaurantId ;
 
     const { token, email } = parseJwt();
     function renderRestaurantInforamtion() {
@@ -176,7 +117,7 @@ export function renderOverview() {
 
                 if (!response.ok && response.status === 403) {
                     showNotification("session expired");
-                    window.location="/";
+                    window.location = "/";
                 }
                 return await response.json();
             } catch (error) {
@@ -185,14 +126,17 @@ export function renderOverview() {
         }
 
         getRestaurantInformation().then((data) => {
+            if (!data.name) showNotification("Please Update restaurant Inforamtion !!");
+            initDashboard(data);
             loadRestaurantIdAndInfo(data);
             loadRestaurantName(data.name);
+            restaurantId = data.restaurantId;
         })
     }
 
     renderRestaurantInforamtion();
 
-    // Function to render popular items
+    //  render popular items
     function renderPopularItems() {
         const popularItemsList = document.getElementById('popular-items');
         popularItemsList.innerHTML = popularItems.map(item => `
@@ -203,7 +147,7 @@ export function renderOverview() {
         `).join('');
     }
 
-    // Function to render revenue chart
+    //  revenue chart
     function renderRevenueChart() {
         const chart = document.getElementById('revenue-chart');
         const maxRevenue = Math.max(...weeklyRevenue);
@@ -213,74 +157,111 @@ export function renderOverview() {
             return `
                 <div class="chart-bar" 
                      style="height: ${height}%" 
-                     title="${days[index]}: ${formatCurrency(revenue)}">
+                     title="${days[index]}: ${revenue}">
                 </div>
             `;
         }).join('');
     }
 
-    // Function to handle filter buttons
-    function initializeFilterButtons() {
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
 
-                const filter = button.dataset.filter;
-                if (filter === 'all') {
-                    renderOrders();
-                } else {
-                    const filteredOrders = mockOrders.filter(order => order.status === filter);
-                    const ordersContainer = document.getElementById('orders-list');
-                    ordersContainer.innerHTML = filteredOrders.map(order => `
-                        <div class="order-card">
-                            <span class="order-status status-${order.status}">${order.status}</span>
-                            <div class="order-info">
-                                <strong>Table ${order.table}</strong>
-                                <p>${order.items.join(', ')}</p>
-                                <div class="order-meta">
-                                    <small>${order.time}</small>
-                                    <strong>${formatCurrency(order.total)}</strong>
-                                </div>
-                            </div>
-                            <div class="order-actions">
-                                ${getActionButtons(order)}
-                            </div>
-                        </div>
-                    `).join('');
-                }
-            });
+    function addOrderEventListeners() {
+        document.querySelectorAll(".btn-accept").forEach(button => {
+            button.addEventListener("click", () => updateOrderStatus(button.dataset.orderId, 'preparing'));
+        });
+    
+        document.querySelectorAll(".btn-ready").forEach(button => {
+            button.addEventListener("click", () => updateOrderStatus(button.dataset.orderId, 'ready'));
+        });
+    
+        document.querySelectorAll(".btn-complete").forEach(button => {
+            button.addEventListener("click", () => completeOrder(button.dataset.orderId));
         });
     }
 
-    // Simulate new incoming orders
-    function simulateNewOrders() {
-        setInterval(() => {
-            const newOrderChance = Math.random();
-            if (newOrderChance > 0.7) {
-                const newOrder = {
-                    id: Date.now(),
-                    table: Math.floor(Math.random() * 20) + 1,
-                    items: ['Margherita Pizza', 'Caesar Salad'],
-                    status: 'new',
-                    time: 'just now',
-                    total: 32.50
-                };
-                mockOrders.unshift(newOrder);
-                renderOrders();
+    const ordersContainer = document.querySelector('.orders-container');
+    async function simulateNewOrders(restaurantId) {
+        if (!restaurantId) return;
+
+        try {
+            const response = await fetch(`${API}/restaurant/get/orders?id=${restaurantId}`, {
+                headers: { "Authorization": `Bearer ${token}` }
+            });
+
+            if (!response.ok) {
+                console.error("Failed to fetch orders", response);
+                return;
+            }
+
+            const res = await response.json();
+            if (!res.length === 0) {
                 showNotification('New order received!');
             }
-        }, 10000);
+            console.log(res);
+
+            const fragment = document.createDocumentFragment();
+            res.reverse().forEach(order => {
+                console.log(order);
+                const orderCard = document.createElement('div');
+                orderCard.classList.add('order-card');
+
+                orderCard.innerHTML = `
+                    <span class="order-status status-${order.status.toLowerCase()}">${order.status.toLowerCase()}</span>
+                    <div class="order-info">
+                        <span>${order.orderId}</span>
+                        ${order.foodList.map(food => `<p>${food.itemName} &nbsp;&nbsp; <i class="fa-solid fa-xmark"></i> &nbsp;&nbsp; 1</p>`).join('')}
+                        <div class="order-meta">
+                            <small>now</small>
+                        </div>
+                    </div>
+                    <div class="order-actions">
+                        ${getActionButtons(order)}
+                    </div>`;
+
+                fragment.appendChild(orderCard);
+            });
+
+            ordersContainer.appendChild(fragment);
+            addOrderEventListeners();
+
+        } catch (error) {
+            console.error("Error fetching orders:", error);
+        }
     }
 
-    function initDashboard() {
-        renderOrders();
+    
+
+    function initDashboard({ restaurantId }) {
         renderPopularItems();
         renderRevenueChart();
-        initializeFilterButtons();
-        simulateNewOrders();
+        simulateNewOrders(restaurantId);
     }
-    initDashboard();
-    document.addEventListener('DOMContentLoaded', initDashboard);
+
+    async function updateOrderStatus(orderId, newStatus) {
+
+        
+        console.log(orderId , newStatus , restaurantId)
+        try {
+           const response = await fetch(`${API}/restaurant/update/${orderId}`,{
+            method:"PUT",
+            headers:{
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({status:newStatus})
+           }) 
+
+           if(!response.ok){
+            console.log(response);
+            return;
+           }
+        } catch (error) {
+            console.log(error);
+        }
+ 
+        ordersContainer.innerHTML="";
+        showNotification(`Order #${orderId} is now ${newStatus}`);
+        simulateNewOrders(restaurantId);
+    
+    }
+
 }

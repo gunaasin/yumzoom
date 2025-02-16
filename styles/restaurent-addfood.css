@@ -2,13 +2,13 @@
     display: flex;
     width: 100%;
     background-color: var(--card-bg);
-    padding: 2.5rem;
+    padding: 2rem;
     border-radius: 4px;
     box-shadow: var(--shadow-md);
     transition: transform 0.2s ease;
   }
   .food-form__form{
-    width: 50%;
+    width: 40%;
     
   }
   
@@ -40,12 +40,12 @@
   .food-form__textarea,
   .food-form__select {
     width: 100%;
-    border: none;
     padding: 0.75rem 1rem;
-    border-bottom: 1.5px solid var(--primary-color);
     font-size: 1rem;
-    color: var(--text-primary);
-    background-color: var(--card-bg);
+    /* border: 1px solid gray; */
+    border: none;
+    background-color: white;
+    border-radius: 7px;
     transition: all 0.2s ease;
     box-sizing: border-box;
   }
@@ -68,7 +68,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: var(--primary-color);
+    background-color:#3e3b3b;
     color: white;
     padding: 0.875rem 1.5rem;
     border: none;

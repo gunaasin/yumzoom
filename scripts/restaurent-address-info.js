@@ -13,12 +13,12 @@ export function loadRestaurantAddressAndUpdateInfo() {
            <form id="restaurantForm" class="restaurant-form"">
                 <div class="form-group animationThree">
                     <label for="name" class="form-label">Restaurant Name</label>
-                    <input type="text" id="name" name="name" class="form-input" placeholder="Enter restaurant name" required>
+                    <input type="text" id="name" name="name" class="form-input"  required>
                 </div>
     
                 <div class="form-group animationFour">
                     <label for="phone" class="form-label">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" class="form-input" placeholder="Enter 10-digit phone number" required>
+                    <input type="tel" id="phone" name="phone" class="form-input" required>
                 </div>
     
                 <div class="form-group animationFive">
@@ -46,7 +46,7 @@ export function loadRestaurantAddressAndUpdateInfo() {
 
                 <div class="form-group animationSix">
                     <label for="imag" class="form-label">Image Path</label>
-                    <input type="text" id="imagePath" name="imag" class="form-input" placeholder="https://example/profile.png" required>
+                    <input type="text" id="imagePath" name="imag" class="form-input" required>
                 </div>
     
                 <button type="button" class="address-toggle animationSix" >
@@ -57,22 +57,22 @@ export function loadRestaurantAddressAndUpdateInfo() {
                 <div class="address-section" id="addressSection">
                     <div class="form-group ">
                         <label for="street" class="form-label">Street Address</label>
-                        <input type="text" id="street" name="street" class="form-input" placeholder="Enter street address" required>
+                        <input type="text" id="street" name="street" class="form-input"  required>
                     </div>
     
                     <div class="form-group">
                         <label for="city" class="form-label">City</label>
-                        <input type="text" id="city" name="city" class="form-input" placeholder="Enter city" required>
+                        <input type="text" id="city" name="city" class="form-input"  required>
                     </div>
     
                     <div class="form-group">
                         <label for="state" class="form-label">State</label>
-                        <input type="text" id="state" name="state" class="form-input" placeholder="Enter state" required>
+                        <input type="text" id="state" name="state" class="form-input"  required>
                     </div>
     
                     <div class="form-group">
                         <label for="pinCode" class="form-label">Pin Code</label>
-                        <input type="text" id="pinCode" name="pinCode" class="form-input" placeholder="Enter 6-digit pin code" required>
+                        <input type="text" id="pinCode" name="pinCode" class="form-input" required>
                     </div>
                 </div>
     
