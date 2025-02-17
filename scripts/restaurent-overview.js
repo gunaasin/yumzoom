@@ -1,9 +1,8 @@
 import { showNotification } from "./notification.js";
 import { parseJwt } from "./parseValue.js";
-import API from "./end-point.js";
+import API ,{ W_API }  from "./end-point.js";
 import { loadRestaurantName } from "./restaurant-nav.js";
 import { loadRestaurantIdAndInfo, extractRestaurantId } from "./restaurant.js";
-
 
 
 export function renderOverview() {
@@ -84,7 +83,7 @@ export function renderOverview() {
         { name: 'Grilled Salmon', orders: 65 }
     ];
 
-    const weeklyRevenue = [0, 0, 0, 0, 0, 0, 0];
+    const weeklyRevenue = [10, 40, 50, 10, 30, 20, 50];
     const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 
@@ -101,7 +100,7 @@ export function renderOverview() {
         }
     }
 
-    let restaurantId ;
+    let restaurantId;
 
     const { token, email } = parseJwt();
     function renderRestaurantInforamtion() {
@@ -168,11 +167,11 @@ export function renderOverview() {
         document.querySelectorAll(".btn-accept").forEach(button => {
             button.addEventListener("click", () => updateOrderStatus(button.dataset.orderId, 'preparing'));
         });
-    
+
         document.querySelectorAll(".btn-ready").forEach(button => {
             button.addEventListener("click", () => updateOrderStatus(button.dataset.orderId, 'ready'));
         });
-    
+
         document.querySelectorAll(".btn-complete").forEach(button => {
             button.addEventListener("click", () => completeOrder(button.dataset.orderId));
         });
@@ -181,7 +180,7 @@ export function renderOverview() {
     const ordersContainer = document.querySelector('.orders-container');
     async function simulateNewOrders(restaurantId) {
         if (!restaurantId) return;
-
+        renderLiveMessage(restaurantId);
         try {
             const response = await fetch(`${API}/restaurant/get/orders?id=${restaurantId}`, {
                 headers: { "Authorization": `Bearer ${token}` }
@@ -197,7 +196,7 @@ export function renderOverview() {
                 showNotification('New order received!');
             }
             console.log(res);
-
+            ordersContainer.innerHTML = "";
             const fragment = document.createDocumentFragment();
             res.reverse().forEach(order => {
                 console.log(order);
@@ -216,19 +215,15 @@ export function renderOverview() {
                     <div class="order-actions">
                         ${getActionButtons(order)}
                     </div>`;
-
                 fragment.appendChild(orderCard);
-            });
 
+            });
             ordersContainer.appendChild(fragment);
             addOrderEventListeners();
-
         } catch (error) {
             console.error("Error fetching orders:", error);
         }
     }
-
-    
 
     function initDashboard({ restaurantId }) {
         renderPopularItems();
@@ -237,31 +232,57 @@ export function renderOverview() {
     }
 
     async function updateOrderStatus(orderId, newStatus) {
-
-        
-        console.log(orderId , newStatus , restaurantId)
         try {
-           const response = await fetch(`${API}/restaurant/update/${orderId}`,{
-            method:"PUT",
-            headers:{
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify({status:newStatus})
-           }) 
+            const response = await fetch(`${API}/restaurant/update/${orderId}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({ status: newStatus })
+            })
 
-           if(!response.ok){
-            console.log(response);
-            return;
-           }
+            if (!response.ok) {
+                console.log(response);
+                return;
+            }
+
+            ordersContainer.innerHTML = "";
+            showNotification(`Order #${orderId} is now ${newStatus}`);
+            simulateNewOrders(restaurantId);
         } catch (error) {
             console.log(error);
         }
- 
-        ordersContainer.innerHTML="";
-        showNotification(`Order #${orderId} is now ${newStatus}`);
-        simulateNewOrders(restaurantId);
-    
     }
+
+    function renderLiveMessage(restaurantId) {
+        const socket = new SockJS(W_API);
+        const stompClient = new StompJs.Client({
+            webSocketFactory: () => socket,
+            debug: (str) => console.log(str),
+            reconnectDelay: 5000
+        });
+
+        stompClient.onConnect = function (frame) {
+            console.log("✅ Connected to WebSocket!");
+            console.log(restaurantId , "this one for restaurant id")
+            stompClient.subscribe(`/topic/rest_orders/${restaurantId}`, function (message) {
+                console.log("📩 Order Update: " ,message.body);
+            if(message.body){
+                simulateNewOrders(restaurantId);
+            }
+            });
+        };
+        stompClient.onWebSocketClose = (event) => {
+            console.error("❌ WebSocket closed:", event);
+        };
+        stompClient.onWebSocketError = (event) => {
+            console.error("⚠ WebSocket error:", event);
+        };
+        stompClient.activate();
+    }
+
+    
+
 
 }

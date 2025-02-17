@@ -1,6 +1,6 @@
 .dashboard-container {
     display: flex;
-    margin-top: 1rem;
+    margin-top: 4rem;
     min-height: calc(100vh - 4rem);
 }
 
@@ -190,7 +190,7 @@
 }
 
 .btn.picked-up {
-    background-color: var(--info-color);
+    background-color:black;
     color: white;
 }
 

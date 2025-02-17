@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Dashboard - FoodExpress</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/delivery-person-dashboard.css">
+    <link rel="stylesheet" href="styles/restaurent-nav.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="./styles/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Modern+Antiqua&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+<body>
+
+    <nav class="delivery-agent-nav"> </nav>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="driver-info">
+                <img src="./assets/profile.svg" alt="Agent image">
+                <h3>Guna</h3>
+                <span class="status available">Available</span>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <span>4.8</span>
+                </div>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active"><i class="fas fa-home"></i> Overview</li>
+                <li><i class="fas fa-motorcycle"></i> Active Deliveries</li>
+                <li><i class="fas fa-history"></i> History</li>
+                <li><i class="fas fa-wallet"></i> Earnings</li>
+                <li><i class="fas fa-cog"></i> Settings</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+        </main>
+    </div>
+    <footer class="footer"></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@latest/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@latest/bundles/stomp.umd.min.js"></script>
+    <script type="module" src="./scripts/delivery-agent.js"></script>
+</body>
+</html>

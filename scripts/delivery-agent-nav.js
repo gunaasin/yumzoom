@@ -1,12 +1,13 @@
-import { loadRestaurantAddressAndUpdateInfo } from "./restaurent-address-info.js";
-
-
 const nav = document.querySelector('.delivery-agent-nav');
 let sideNavVisible = false;
+
+{/* <i class="fa-solid fa-xmark"></i>
+<h3 id="restaurant-name">YumZoom Restaurant</h3> */}
 function BigNav() {
     nav.innerHTML = ` 
     <div class="logo animationFirst">
         <img src="./assets/logo.png" alt="logo" class="yumzoom"> 
+
     </div>
 
      <div class="nav-icons animationFive">
@@ -22,6 +23,16 @@ function BigNav() {
         document.getElementById("overview").classList.remove("active");
         document.getElementById("orders").classList.remove("active");
     });
+
+}
+
+
+export function loadRestaurantName(name){
+   try{
+    document.getElementById('restaurant-name').innerHTML = name ? name : "YumZoom Restaurant";
+   }catch(error){
+    console.warn('Not for mobile');
+   }
 }
 
 function SmallNav() {

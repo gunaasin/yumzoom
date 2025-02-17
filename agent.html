@@ -20,14 +20,15 @@
 
 <body>
     <nav class="delivery-agent-nav"></nav>
+    
 
     <div class="dashboard-container">
 
         <aside class="sidebar">
             <div class="sidebar__header">
-                <img src="https://ui-avatars.com/api/?name=John+Doe" alt="Profile" class="sidebar__profile-img">
+                <img src="https://ui-avatars.com/api/?name=Guna+Vijay" alt="Profile" class="sidebar__profile-img">
                 <div class="sidebar__profile-info">
-                    <h3 class="sidebar__name">John Doe</h3>
+                    <h3 class="sidebar__name"></h3>
                     <p class="sidebar__status sidebar__status--online">Online</p>
                 </div>
             </div>
@@ -39,77 +40,24 @@
             </ul>
         </aside>
 
-    <!-- Main Content -->
+  
     <main class="main">
-        <!-- Header -->
-        <header class="header">
-            <div class="header__status">
-                <select class="header__status-select" id="deliveryStatus">
-                    <option value="available">Available</option>
-                    <option value="busy">Busy</option>
-                    <option value="offline">Offline</option>
-                </select>
-            </div>
-            <div class="header__stats">
-                <div class="header__stat">
-                    <i class="fas fa-star"></i>
-                    <span>4.8</span>
-                </div>
-                <div class="header__stat">
-                    <i class="fas fa-route"></i>
-                    <span>12.5 km</span>
-                </div>
-            </div>
-        </header>
 
-        <!-- Current Delivery -->
-        <section class="delivery">
-            <h2 class="delivery__title">Current Delivery</h2>
-            <div class="delivery__card">
-                <div class="delivery__header">
-                    <span class="delivery__order-id">#ORD-2023-1234</span>
-                    <span class="delivery__status delivery__status--in-progress">In Progress</span>
-                </div>
-                <div class="delivery__locations">
-                    <div class="delivery__location">
-                        <i class="fas fa-store"></i>
-                        <div class="delivery__location-details">
-                            <h4>Pickup Location</h4>
-                            <p>123 Restaurant St, City</p>
-                        </div>
-                    </div>
-                    <div class="delivery__location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div class="delivery__location-details">
-                            <h4>Delivery Location</h4>
-                            <p>456 Customer Ave, City</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="delivery__actions">
-                    <button class="delivery__btn delivery__btn--primary">
-                        <i class="fas fa-check"></i>
-                        Complete Delivery
-                    </button>
-                    <button class="delivery__btn delivery__btn--secondary">
-                        <i class="fas fa-phone"></i>
-                        Contact Customer
-                    </button>
-                </div>
-            </div>
-        </section>
+        
 
-        <!-- Orders List -->
+        <header class="header"></header>
+        <section class="delivery"></section>
+
         <section class="orders">
             <h2 class="orders__title">Recent Orders</h2>
-            <div class="orders__list" id="ordersList">
-                <!-- Orders will be populated by JavaScript -->
-            </div>
+            <div class="orders__list" id="ordersList"></div>
         </section>
     </main>
     </div>
 
     <footer class="footer"></footer>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@latest/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@latest/bundles/stomp.umd.min.js"></script>
     <script type="module" src="./scripts/delivery-agent.js"></script>
 </body>
 

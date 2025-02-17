@@ -1,5 +1,5 @@
-
 .dashboard-container {
+    margin-top: 50px;
     display: flex;
     min-height: 100vh;
 }
@@ -201,14 +201,14 @@
 }
 
 .delivery__btn {
-    flex: 1;
+    flex: 0.2;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
     padding: 0.75rem 1rem;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 40px;
     font-size: 0.875rem;
     font-weight: 500;
     cursor: pointer;
@@ -216,16 +216,55 @@
 }
 
 .delivery__btn--primary {
-    background-color: var(--primary-color);
+    background-color: rgb(66, 62, 62);
     color: white;
 }
 
+/* notification */
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    border-radius: 10px;
+    background-color: #242222;
+    color: #d9edff;
+    text-align: center;
+    padding: 15px 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transform: translateX(150%);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.bell{
+    width: 20px;
+    margin: 5px;
+    position: relative;
+    top: 10px;
+}
+.notification button{
+    border: none;
+    color: white;
+    margin: 5px;
+    font-size: 16px;
+    border-radius: 40px;
+    padding: 10px 25px;
+    outline:none;
+    background-color: rgba(255, 255, 255, 0.292);
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+
 .delivery__btn--primary:hover {
-    background-color: var(--primary-hover);
+    background-color: rgb(53, 50, 50);
 }
 
 .delivery__btn--secondary {
-    background-color: var(--background);
+    background-color: rgb(198, 198, 198);
     color: var(--text-primary);
 }
 

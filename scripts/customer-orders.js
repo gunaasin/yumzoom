@@ -1,4 +1,4 @@
-import API from "./end-point.js";
+import API, { W_API } from "./end-point.js";
 import { showNotification } from "./notification.js";
 import { parseJwt } from "./parseValue.js";
 
@@ -15,7 +15,6 @@ export function customerOrderSection() {
 
     document.querySelector(".main-content").innerHTML = ordersSectionHtml;
     async function renderOrderList(order) {
-        console.log(order)
         renderLiveMessage(order.orderId);
         const orderListHtml = `
             <div class="order-list">
@@ -54,7 +53,7 @@ export function customerOrderSection() {
 
     async function getOrderList() {
         const { token } = parseJwt();
-
+        
         try {
             const response = await fetch(`${API}/customer/orderlist?token=${token}`, {
                 headers: {
@@ -66,7 +65,7 @@ export function customerOrderSection() {
                 showNotification("Server Busy");
                 return;
             }
-
+            document.querySelector(".order-list-container").innerHTML="";
             const orders = await response.json();
             orders.reverse().forEach(order => renderOrderList(order));
         } catch (error) {
@@ -80,42 +79,37 @@ export function customerOrderSection() {
 
 
     function renderLiveMessage(id) {
-        const { token } = parseJwt();
-
-        const socket = new SockJS("http://localhost:8080/ws");
+        const socket = new SockJS(W_API);
         const stompClient = new StompJs.Client({
             webSocketFactory: () => socket,
-            connectHeaders: {
-                Authorization: "Bearer " + token
-            },
-            debug: function (str) {
-                console.log(str); // Debugging logs
-            },
-            reconnectDelay: 5000 // Auto-reconnect after 5 seconds
+            debug: (str) => console.log(str),
+            reconnectDelay: 5000
         });
-    
+
         stompClient.onConnect = function (frame) {
-            console.log(" Connected to WebSocket!");
-    
-            // Subscribe to order updates
+            console.log("✅ Connected to WebSocket!");
             stompClient.subscribe(`/topic/order/${id}`, function (message) {
-                console.log(" Order Update:", message.body);
+                console.log("📩 Order Update: " ,message.body);
+            if(message.body){
+                getOrderList();
+            }
             });
         };
-    
-        stompClient.onStompError = function (frame) {
-            console.error(" STOMP Error:", frame.headers['message']);
+        stompClient.onWebSocketClose = (event) => {
+            console.error("❌ WebSocket closed:", event);
         };
-    
-        stompClient.activate(); // ✅ Correct way to connect
+        stompClient.onWebSocketError = (event) => {
+            console.error("⚠ WebSocket error:", event);
+        };
+        stompClient.activate();
     }
-    
 
 
     async function name() {
         const { token } = parseJwt();
         try {
-            const response = await fetch(`${API}/test-websocket/ORDER_02161724_394`, {
+            const response = await fetch(`${API}/test-websocket/12345`, {
+            // const response = await fetch(`${API}/test-websocket/ORDER_02161724_394`, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
@@ -128,10 +122,10 @@ export function customerOrderSection() {
     }
 
     // setInterval(() => {
-        name();   
+    // name();
     //     console.log("name called")
     // },5000)
-    
+
 
 }
 
