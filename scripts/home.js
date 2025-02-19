@@ -11,7 +11,7 @@ const { token } = parseJwt();
 export const restaurantGrid = document.querySelector(".restaurant-grid");
 export function loadRestaurants(info) {
     const restaurantHtml = `
-        <a  href="menu.html?res=${info.restaurantId}" class="restaurant-card autoshow">
+        <a  href="menu?res=${info.restaurantId}" class="restaurant-card autoshow">
           <img
            src="${info.image===null? "./assets/restaurant2.jpg" : info.image}"
             alt="Restaurant-img">

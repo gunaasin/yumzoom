@@ -127,11 +127,11 @@ function loadSignInForm() {
                     const {role} = parseJwt();
                     if(role==="RESTAURANT"){
                         
-                        window.location="/restaurant.html";
+                        window.location="/restaurant";
                     }else if(role==="DELIVERY_AGENT"){
-                        window.location="/agent.html";
+                        window.location="/agent";
                     }else{
-                        window.location="/home.html";
+                        window.location="/home";
                     }
                 }
 

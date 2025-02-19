@@ -82,7 +82,7 @@ async function getResaults(keyQuery) {
                     loadRestaurants(item);
                 })
             } else if (result[0].category) {
-                window.location = `/menu.html?f=${encodeURIComponent(btoa(JSON.stringify(result)))}`;
+                window.location = `/menu?f=${encodeURIComponent(btoa(JSON.stringify(result)))}`;
             }
         }
 
