@@ -1,6 +1,6 @@
 .orders-section {
     background-color: var(--background-color);
-    padding: 1.5rem;
+    padding: 1rem;
     border-radius: 8px;
     margin-bottom: 2rem;
 }
@@ -228,6 +228,6 @@ input[type="file"] {
 
 .main-content {
     flex: 1;
-    padding: 2rem;
+    padding: 1rem;
     background-color: var(--light-gray);
 }

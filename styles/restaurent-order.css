@@ -147,7 +147,7 @@ button {
 
 @media (max-width: 768px) {
     .container {
-        padding: 1rem;
+        padding: 0px;
     }
 
     header {

@@ -1,4 +1,3 @@
-import { showNotification } from "./notification.js";
 
 export function restaurantAddressInfo() {
     const link = document.createElement("link");
@@ -65,11 +64,11 @@ export function restaurantAddressInfo() {
                 image: 'https://images.unsplash.com/photo-1590947132387-155cc02f3212?w=120&h=120&fit=crop'
             },
             items: [
-                { name: 'Margherita Pizza', quantity: 1, price: 15.99 },
-                { name: 'Garlic Bread', quantity: 1, price: 4.99 },
-                { name: 'Coke', quantity: 2, price: 4.00 }
+                { name: 'Margherita Pizza', quantity: 1, price: 150 },
+                { name: 'Garlic Bread', quantity: 1, price: 40 },
+                { name: 'Coke', quantity: 2, price: 90 }
             ],
-            total: 28.98,
+            total: 280,
             status: 'Delivered',
             address: '123 Main St, City',
             rating: 5
@@ -82,11 +81,11 @@ export function restaurantAddressInfo() {
                 image: 'https://images.unsplash.com/photo-1586816001966-79b736744398?w=120&h=120&fit=crop'
             },
             items: [
-                { name: 'Double Cheeseburger', quantity: 2, price: 13.98 },
-                { name: 'French Fries', quantity: 2, price: 7.98 },
-                { name: 'Milkshake', quantity: 1, price: 5.99 }
+                { name: 'Margherita Pizza', quantity: 1, price: 150 },
+                { name: 'Garlic Bread', quantity: 1, price: 40 },
+                { name: 'Coke', quantity: 2, price: 90 }
             ],
-            total: 27.95,
+            total: 280,
             status: 'Delivered',
             address: '456 Oak Ave, City',
             rating: 4
@@ -99,19 +98,17 @@ export function restaurantAddressInfo() {
                 image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=120&h=120&fit=crop'
             },
             items: [
-                { name: 'California Roll', quantity: 2, price: 16.00 },
-                { name: 'Miso Soup', quantity: 2, price: 6.00 },
-                { name: 'Green Tea', quantity: 2, price: 4.00 }
+                { name: 'Margherita Pizza', quantity: 1, price: 150 },
+                { name: 'Garlic Bread', quantity: 1, price: 40 },
+                { name: 'Coke', quantity: 2, price: 90 }
             ],
-            total: 26.00,
+            total: 280,
             status: 'Delivered',
             address: '789 Pine St, City',
             rating: 5
         }
     ];
 
-    // Format currency function (Fixed issue)
-    const formatCurrency = (amount) => `$${amount.toFixed(2)}`;
 
     // Format date
     const formatDate = (dateString) => {
@@ -130,7 +127,7 @@ export function restaurantAddressInfo() {
         return items.map(item => `
             <div class="order-item">
                 <span>${item.quantity} x ${item.name}</span>
-                <span>${formatCurrency(item.price)}</span>
+                <span>${item.price}</span>
             </div>
         `).join('');
     };
@@ -145,7 +142,7 @@ export function restaurantAddressInfo() {
         template.querySelector('.order-date').textContent = formatDate(order.date);
         template.querySelector('.order-items').innerHTML = renderOrderItems(order.items);
         template.querySelector('.delivery-address').textContent = order.address;
-        template.querySelector('.order-total').textContent = `Total: ${formatCurrency(order.total)}`;
+        template.querySelector('.order-total').textContent = `Total: ${order.total}`;
         return template;
     };
 

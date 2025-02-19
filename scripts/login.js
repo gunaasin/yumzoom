@@ -16,7 +16,7 @@ const signInHTML = `
     </div>
     <button id="signin" class="submit-button" type="button">Sign In</button>
     <a href="#" class="forgot-password">Forgot your password?</a>
-    <button id="createAccount" class="swith">(or) Create an account</button>
+    <button id="createAccount" class="swith">Create an account</button>
 `;
 
 const signUpHTML = `
@@ -65,7 +65,7 @@ const signUpHTML = `
     <button id="signup" class="submit-button" type="button">Create Account</button>
     <br>
     <br>
-    <button class="swith" id="alreadyAccountIsthere">Already have an account ? Sign in</button>
+    <button class="swith already" id="alreadyAccountIsthere">Already have an account ? Sign in</button>
 `;
 
 const logo = `

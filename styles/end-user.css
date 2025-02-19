@@ -55,10 +55,6 @@ body{
     color: rgb(21, 175, 55);
 }
 
-/* .order-status.delivered {
-    background-color: var(--success-color);
-    color: white;
-} */
 
 .restaurant-info {
     display: flex;
@@ -177,7 +173,7 @@ body{
 
 .main-content {
     flex: 1;
-    padding: 2rem;
+    padding: 1rem;
     background-color: var(--light-gray);
 }
 
@@ -282,12 +278,12 @@ body{
     .dashboard-container {
         flex-direction: column;
     }
-
+    
     .sidebar {
         width: 100%;
         margin-bottom: 1rem;
     }
-
+    
     .restaurant-grid {
         grid-template-columns: 1fr;
     }
@@ -300,4 +296,63 @@ body{
     .btn.reorder {
         width: 100%;
     }
+
+    .main-content {
+        flex: 1;
+        padding: 16px;
+        background-color: var(--light-gray);
+    }
 }
+        
+@media (max-width: 475px) {
+    .sidebar-menu li {
+        margin: 10px 0px;
+        padding: 0.75rem 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 14px;
+        border-radius: 40px ;
+        transition:  0.3s ease-in-out;
+    }
+    .main-content {
+        flex: 1;
+        padding: 10px;
+        background-color: var(--light-gray);
+    }
+    .recent-orders {
+        background-color: var(--background-color);
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+    }
+    .order-id {
+        font-size: 14px;
+        font-weight:600;
+        margin-right: 15px;
+    }
+    .order-status {
+        padding: 0.25rem 0px;
+        border-radius: 12px;
+        font-weight: 500;
+        font-size: 0.8rem;
+        color: rgb(21, 175, 55);
+    }
+    .order-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+    }
+    .order-meta {
+        display: flex;
+        justify-content: space-around;
+        gap: 1rem;
+        flex-wrap: wrap;
+        color: var(--gray-color);
+        font-size: 0.9rem;
+    }
+}
+

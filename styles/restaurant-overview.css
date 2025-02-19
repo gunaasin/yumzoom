@@ -268,7 +268,7 @@
 
 /* Content Grid */
 .content-grid {
-    flex-direction:column;
+    flex-direction:row;
 }
 /* Orders Section */
 .orders-section {
@@ -282,13 +282,9 @@
 
 @media (max-width: 768px) {
 
-    .sidebar {
-        display: none;
-    }
-
     .main-content {
         margin-left: 0;
-        padding: 1rem;
+        padding: 0px;
     }
 
     .stats-grid {
@@ -302,4 +298,52 @@
     .search-bar input {
         width: 200px;
     }
+    .section-header {
+        flex-wrap: wrap;
+    }
+    .order-card {
+        background: rgb(255, 255, 255);
+        /* padding: 1rem; */
+        border-radius:4px;
+        display: grid;
+        position: relative;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 1rem;
+        min-height: 150px;
+        transition: var(--transition);
+    }
+}
+
+@media (max-width: 475px) {
+    .order-card {
+        background: rgb(255, 255, 255);
+        /* padding: 1rem; */
+        border-radius:4px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        align-items: start;
+        gap: 1rem;
+    
+        transition: var(--transition);
+    }
+
+    .filter-buttons {
+        margin-top: 30px;
+    }
+
+    .order-actions {
+        bottom:10px;
+        right: 10px;
+        position: relative;
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .filter-btn {
+        padding: 5px 10px;
+    }
+
+
 }

@@ -3,14 +3,13 @@ import { showNotification } from "./notification.js";
 import { parseJwt } from "./parseValue.js";
 import { extractRestaurantId } from "./restaurant.js";
 export function loadRestaurantAddressAndUpdateInfo() {
-
-
+    
     const link = document.createElement("link");
     link.rel = "stylesheet";
     link.href = "../styles/restaurentInformation.css";
     document.head.appendChild(link);
     const addressHtml = ` 
-           <form id="restaurantForm" class="restaurant-form"">
+           <form id="restaurantForm" class="restaurant-form">
                 <div class="form-group animationThree">
                     <label for="name" class="form-label">Restaurant Name</label>
                     <input type="text" id="name" name="name" class="form-input"  required>
@@ -123,20 +122,18 @@ export function loadRestaurantAddressAndUpdateInfo() {
                 },
                 body: JSON.stringify(formData)
             })
-            const res = await response.json();
             if(!response.ok){
-                showNotification(res);
                 console.warn(`exception in ${response}`);
                 return;
             }
+            const res = await response.json();
             showNotification(res.message);
+            location.reload();
             restaurantForm.reset();
         }catch(error){
             console.warn("exception in address update info");
         }
 
-
-        // Hide address section after form submission
         document.getElementById('addressSection').classList.remove('show');
         document.querySelector('.address-toggle').classList.remove('active');
         console.log("information")
@@ -144,20 +141,14 @@ export function loadRestaurantAddressAndUpdateInfo() {
 
 
 
-
-
-    // Add phone number validation on input
     document.getElementById('phone').addEventListener('input', function (e) {
         this.value = this.value.replace(/[^\d]/g, '').slice(0, 10);
     });
 
-    // Add pin code validation on input
     document.getElementById('pinCode').addEventListener('input', function (e) {
         this.value = this.value.replace(/[^\d]/g, '').slice(0, 6);
     });
 
-
-    // Toggle address section
     document.querySelector(".address-toggle").addEventListener('click', () => {
         const addressSection = document.getElementById('addressSection');
         const toggleButton = document.querySelector('.address-toggle');

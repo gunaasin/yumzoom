@@ -1,161 +1,190 @@
 .food-form {
-    display: flex;
-    width: 100%;
-    background-color: var(--card-bg);
-    padding: 2rem;
-    border-radius: 4px;
-    box-shadow: var(--shadow-md);
-    transition: transform 0.2s ease;
+  display: flex;
+  width: 100%;
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 4px;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease;
+}
+
+.food-form__form {
+  width: 40%;
+
+}
+
+.food-form:hover {
+  transform: translateY(-2px);
+}
+
+.food-form__title {
+  margin: 0 0 2rem 0;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.food-form__group {
+  margin-bottom: 1.5rem;
+}
+
+.food-form__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.food-form__input,
+.food-form__textarea,
+.food-form__select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  /* border: 1px solid gray; */
+  border: none;
+  background-color: white;
+  border-radius: 7px;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.food-form__input:focus,
+.food-form__textarea:focus,
+.food-form__select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--input-focus);
+}
+
+.food-form__textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.food-form__submit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #3e3b3b;
+  color: white;
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.food-form__submit:hover {
+  transform: translateY(-1px);
+}
+
+.food-form__submit:active {
+  transform: translateY(0);
+}
+
+/* Preview styles */
+.preview {
+  /* height: 500px; */
+  width: 40%;
+  margin: 2rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--background);
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-  .food-form__form{
-    width: 40%;
-    
-  }
-  
-  .food-form:hover {
-    transform: translateY(-2px);
-  }
-  
-  .food-form__title {
-    margin: 0 0 2rem 0;
-    color: var(--text-primary);
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-align: center;
-  }
-  
-  .food-form__group {
-    margin-bottom: 1.5rem;
-  }
-  
-  .food-form__label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: var(--text-primary);
-    font-weight: 500;
-    font-size: 0.875rem;
-  }
-  
-  .food-form__input,
-  .food-form__textarea,
-  .food-form__select {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    /* border: 1px solid gray; */
-    border: none;
-    background-color: white;
-    border-radius: 7px;
-    transition: all 0.2s ease;
-    box-sizing: border-box;
-  }
-  
-  .food-form__input:focus,
-  .food-form__textarea:focus,
-  .food-form__select:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px var(--input-focus);
-  }
-  
-  .food-form__textarea {
-    resize: vertical;
-    min-height: 120px;
-  }
-  
-  .food-form__submit {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    background-color:#3e3b3b;
-    color: white;
-    padding: 0.875rem 1.5rem;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 500;
-    width: 100%;
-    transition: all 0.2s ease;
-  }
-  
-  .food-form__submit:hover {
-    transform: translateY(-1px);
-  }
-  
-  .food-form__submit:active {
+
+  to {
+    opacity: 1;
     transform: translateY(0);
   }
-  
-  /* Preview styles */
+}
+
+.preview.show {
+  display: block;
+}
+
+.preview__title {
+  margin: 0 0 1rem 0;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.preview__item {
+  margin: 0.75rem 0;
+  color: var(--text-secondary);
+}
+
+.preview__label {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.preview__image {
+  max-width: 200px;
+  height: auto;
+  border-radius: 0.5rem;
+  margin-top: 0.75rem;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Form validation styling */
+.food-form__input:invalid,
+.food-form__textarea:invalid,
+.food-form__select:invalid {
+  border-color: #ef4444;
+}
+
+/* Responsive adjustments */
+@media (max-width: 780px) {
+  .food-form {
+    display: flex;
+    flex-direction: column;
+  }
+
   .preview {
     height: 500px;
-    width: 40%;
-    margin: 2rem;
-    padding: 1.5rem;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    background-color: var(--background);
-    display: none;
-    animation: fadeIn 0.3s ease;
+    width: 90%;
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .food-form {
+    padding: 10px;
   }
-  
-  .preview.show {
-    display: block;
+
+  .preview {
+    height: 500px;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+    left: -30px;
+    padding: 10px;
   }
-  
-  .preview__title {
-    margin: 0 0 1rem 0;
-    color: var(--text-primary);
-    font-size: 1.25rem;
-    font-weight: 600;
+
+  .food-form__form {
+    width: 100%;
+
   }
-  
-  .preview__item {
-    margin: 0.75rem 0;
-    color: var(--text-secondary);
+
+  .food-form__title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
   }
-  
-  .preview__label {
-    color: var(--text-primary);
-    font-weight: 500;
-  }
-  
-  .preview__image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 0.5rem;
-    margin-top: 0.75rem;
-    box-shadow: var(--shadow-sm);
-  }
-  
-  /* Form validation styling */
-  .food-form__input:invalid,
-  .food-form__textarea:invalid,
-  .food-form__select:invalid {
-    border-color: #ef4444;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 640px) {
-    .food-form {
-      padding: 1.5rem;
-    }
-    
-    .food-form__title {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-  }
+}

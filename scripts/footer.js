@@ -1,7 +1,7 @@
 const footer = document.querySelector('.footer');
 footer.innerHTML = `
     <div class="footer-content">
-      <div class="footer-section">
+      <div class="footer-section img-fotter">
         <a  href="https://gunaportfoliogn.vercel.app/">
           <img src="./assets/yumzoom logo.png" class="footer-img" alt="">
           <p>© 2025 YumZoom Limited</p>

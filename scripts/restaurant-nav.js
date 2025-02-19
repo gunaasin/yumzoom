@@ -38,7 +38,7 @@ export function loadRestaurantName(name){
 
 function SmallNav() {
     nav.innerHTML = ` 
-        <a href="index.html" class="logo "><img src="./assets/logo.png" alt="logo"></a>
+        <a href="https://gunamurugesan.vercel.app/" class="logo "><img src="./assets/logo.png" alt="logo"></a>
 
         <div class="nav-icons ">
             <i id="toggole-btn"class="fa-solid fa-bars"></i>
@@ -49,12 +49,11 @@ function SmallNav() {
             </div>
 
               <div class="side-nav-links">
-                <a href="index.html" class="">Home</a>
-                <a href="index.html#restaurants" class="">Restaurants</a>
-                <a href="login.html" class="">Orders</a>
+                <a href="" class="">Home</a>
+                <a href="" class="">Address</a>
+                <a href="" class="">Orders</a>
             </div>
           
-
         </div>`;
 
     const toggoleBtn = document.getElementById('toggole-btn');

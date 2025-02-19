@@ -13,14 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const img = document.querySelector(".sidebar__profile-img");
     const header = document.querySelector('.header');
 
-
-    function renderCurrentOrder(object){
+    function renderCurrentOrder(object) {
         const orderHtml = `
         <h2 class="delivery__title">Current Delivery</h2>
         <div class="delivery__card">
             <div class="delivery__header">
                 <span class="delivery__order-id">#${object.orderId}</span>
-                <span class="delivery__status delivery__status--in-progress">${object.status ==="OUT_FOR_DELIVERY" ? "In Progress":"Delivered" }</span>
+                <span class="delivery__status delivery__status--in-progress">${object.status === "OUT_FOR_DELIVERY" ? "In Progress" : "Delivered"}</span>
             </div>
             <div class="delivery__locations">
                 <div class="delivery__location">
@@ -43,18 +42,31 @@ document.addEventListener('DOMContentLoaded', () => {
                     <i class="fas fa-check"></i>
                     Complete Delivery
                 </button>
-                    <button class="delivery__btn delivery__btn--secondary">
+                    <button class="delivery__btn delivery__btn--secondary" id="contact_user">
                     <i class="fas fa-phone"></i>
                     Contact Customer
                 </button>
             </div>
         </div>`
 
-        orderContainer.innerHTML =  orderHtml;
-    }
-    
+        orderContainer.innerHTML = orderHtml;
+        document.getElementById("contact_user").addEventListener("click", () => {
+            showNotification('Calling customer...');
+        });
 
-  
+        const completeDeliveryBtn = document.querySelector('.delivery__btn--primary');
+        completeDeliveryBtn.addEventListener('click', () => {
+            const deliveryCard = document.querySelector('.delivery__card');
+            deliveryCard.style.opacity = '0.5';
+            setTimeout(() => {
+                updateOrder(object.orderId , object.status);
+                showNotification('Delivery completed successfully!');
+                deliveryCard.style.opacity = '1';
+                location.reload();
+            }, 500);
+        });
+    }
+
 
     function renderUserinfo(info) {
         statusInfo.className = `sidebar__status sidebar__status--${info.status.toLowerCase()}`;
@@ -117,6 +129,28 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(error);
         }
     }
+    async function updateOrder(orderId , status) {
+        const data = {
+            orderId,
+            status,
+            token
+        }
+        try {
+            const response = await fetch(`${API}/update/order`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify(data)
+            });
+            if (!response.ok) throw new Error("sumthing wrong");
+            const res = await response.json();
+            showNotification(res.message);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     async function confirmOrder(orderId) {
         const data = {
@@ -125,24 +159,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         try {
             const response = await fetch(`${API}/accept/order`, {
-                method:"POST",
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify(data)
             });
-            if (!response.ok) {
+            if (!response.ok && response.status === 403) {
+                window.location ="/";
                 throw new Error("sumthing wrong");
             }
             const res = await response.json();
             renderCurrentOrder(res);
-            
+
         } catch (error) {
             console.log(error);
         }
     }
 
+   
     function renderPopupNewOrder(message) {
         const notificationDiv = document.createElement("div");
         notificationDiv.className = "notification";
@@ -166,6 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
             notificationDiv.remove();
         }, 10000);
     }
+
 
     function renderLiveMessage() {
         const socket = new SockJS(W_API);
@@ -193,7 +230,25 @@ document.addEventListener('DOMContentLoaded', () => {
         stompClient.activate();
     }
 
-    const orders = [];
+    const orders = [
+        {
+            id: 'ORD-2023-1233',
+            address: '789 Pine St, City',
+            status: 'completed',
+            timestamp: '2023-05-15 14:30'
+        },
+        {
+            id: 'ORD-2023-1232',
+            address: '321 Oak St, City',
+            status: 'cancelled',
+            timestamp: '2023-05-15 13:15'
+        },
+        {
+            id: 'ORD-2023-1231',
+            address: '654 Maple St, City',
+            status: 'completed',
+            timestamp: '2023-05-15 12:00'
+        }]
 
     function renderOrders() {
         const ordersList = document.getElementById('ordersList');
@@ -210,20 +265,9 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('');
     }
 
-    const completeDeliveryBtn = document.querySelector('.delivery__btn--primary');
-    completeDeliveryBtn.addEventListener('click', () => {
-        const deliveryCard = document.querySelector('.delivery__card');
-        deliveryCard.style.opacity = '0.5';
-        setTimeout(() => {
-            showNotification('Delivery completed successfully!');
-            deliveryCard.style.opacity = '1';
-        }, 500);
-    });
 
-    const contactCustomerBtn = document.querySelector('.delivery__btn--secondary');
-    contactCustomerBtn.addEventListener('click', () => {
-        showNotification('Calling customer...');
-    });
+
+
 
     renderOrders();
 });
