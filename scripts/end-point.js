@@ -1,4 +1,4 @@
-const API = 'http://localhost:8080/api/v1';
+const API = 'https://yum-zoom.onrender.com/api/v1';
 export default API;
 
-export const W_API  = "http://localhost:8080/ws";
+export const W_API  = "https://yum-zoom.onrender.com/ws";
